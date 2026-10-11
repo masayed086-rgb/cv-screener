@@ -1,9 +1,10 @@
 import {AbsoluteFill, spring, useCurrentFrame, useVideoConfig} from 'remotion';
-import {COLORS, FONT} from '../brand';
+import {COLORS, FONT, OMAR_TEAL} from '../brand';
 import {DUR, EASE_IN_OUT, OFFSET, enter} from '../motion';
 import type {Layout} from './formats';
-import {Card, Chip, Headline, Portrait, Stroke, Sub, clamp01, exitOf, type IconName} from './parts';
+import {Card, Chip, Headline, Stroke, Sub, clamp01, exitOf, type IconName} from './parts';
 import {CRITERIA, END_CARD, FACTORS, MILESTONES, OPTIONS, PACKAGES, sceneById} from './script';
+import {WRITING} from './acting';
 
 type P = {L: Layout};
 const OPTION_ICONS: IconName[] = ['role', 'field', 'way'];
@@ -101,17 +102,18 @@ export const SceneBrand: React.FC<P> = ({L}) => {
   const out = exitOf(f, sc.dur);
   const v = L.vertical;
   const size = v ? 118 : 124;
-  const lockY = v ? L.stage.y - 230 : L.stage.y - 230;
+  const lockY = v ? L.stage.y - 90 : L.stage.y - 150;
   const lineW = v ? 860 : 1000;
   const x0 = L.stage.x - lineW / 2;
   const reveal = clamp01(f, 10, 46, EASE_IN_OUT);
   const desc = enter(f, 50, DUR.heading, OFFSET.heading);
   const endorse = enter(f, 58, DUR.heading, OFFSET.heading);
-  const d = v ? 250 : 200;
-  const py = v ? L.stage.y + 230 : L.stage.y + 150;
-  const dx = v ? 190 : 210;
-  const pop = spring({frame: f - 92, fps, config: {damping: 18, stiffness: 130}});
-  const names = enter(f, 106, DUR.heading, 12);
+  void fps;
+  // Name tags under the characters introduce who is who.
+  const tags = [
+    {x: L.cast.laylaX, name: 'LAYLA', role: 'Career coach', color: COLORS.burgundy, at: 96},
+    {x: L.cast.omarX, name: 'OMAR', role: 'Coachee', color: OMAR_TEAL, at: 104},
+  ];
   return (
     <AbsoluteFill style={{opacity: 1 - out}}>
       <Sub L={L} f={f} dur={sc.dur} text={sc.sub} at={128} top={v ? L.sub.top - 150 : L.sub.top - 80} />
@@ -154,20 +156,28 @@ export const SceneBrand: React.FC<P> = ({L}) => {
           by ASSESS International
         </div>
       </div>
-      {(['samir', 'nour'] as const).map((who, i) => (
-        <div key={who} style={{opacity: names.opacity > 0 ? 1 : 1}}>
-          <Portrait
-            who={who}
-            x={L.stage.x + (i === 0 ? -dx : dx)}
-            y={py}
-            d={d}
-            scale={pop}
-            opacity={Math.min(1, pop * 1.4)}
-            label={names.opacity > 0.01 ? (who === 'samir' ? 'Samir' : 'Nour') : undefined}
-            caption="Career coach"
-          />
-        </div>
-      ))}
+      {tags.map((t) => {
+        const e = enter(f, t.at, DUR.heading, 10);
+        return (
+          <div
+            key={t.name}
+            style={{
+              position: 'absolute',
+              left: t.x - 160,
+              width: 320,
+              // Vertical: above the heads, clear of the Reels UI at the bottom.
+              top: v ? L.cast.floorY - 600 - 40 : L.cast.floorY + 10,
+              textAlign: 'center',
+              fontFamily: FONT.family,
+              opacity: e.opacity,
+              transform: `translateY(${e.offset}px)`,
+            }}
+          >
+            <span style={{fontWeight: 700, fontSize: v ? 26 : 20, letterSpacing: 4, color: t.color}}>{t.name}</span>
+            <span style={{fontWeight: 500, fontSize: v ? 24 : 19, color: COLORS.charcoal, opacity: 0.75}}> · {t.role}</span>
+          </div>
+        );
+      })}
     </AbsoluteFill>
   );
 };
@@ -343,7 +353,8 @@ export const ScenePlan: React.FC<P> = ({L}) => {
         {x: 1320, y: 520},
       ];
   const d = v ? 'M330 600 L330 980' : 'M600 520 L1320 520';
-  const REACH = [36, 96, 156] as const;
+  // Each milestone lands as Omar finishes a line in his notebook (acting.ts WRITING).
+  const REACH = WRITING.map(([, b]) => b - sceneById('plan').from) as [number, number, number];
   const drawn = clamp01(f, REACH[0], REACH[2], (t) => t);
   return (
     <AbsoluteFill>
@@ -407,9 +418,9 @@ export const ScenePackages: React.FC<P> = ({L}) => {
         return (
           <Card
             key={label}
-            x={v ? L.stage.x : L.stage.x + (i - 1) * 440}
-            y={v ? 560 + i * 180 : L.stage.y - 90}
-            w={v ? 780 : 400}
+            x={v ? L.stage.x : L.stage.x + (i - 1) * 350}
+            y={v ? 560 + i * 180 : L.stage.y - 150}
+            w={v ? 780 : 320}
             h={v ? 150 : 230}
             label={label}
             icon="path"
@@ -426,73 +437,72 @@ export const ScenePackages: React.FC<P> = ({L}) => {
   );
 };
 
-/* 8 — end card with the call to action */
+/* 8 — end card: both characters settle beside the call to action */
 export const SceneEnd: React.FC<P> = ({L}) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   const v = L.vertical;
-  const wipe = clamp01(f, 0, 26, EASE_IN_OUT);
-  const R = Math.hypot(L.width, L.height);
-  const item = (i: number) => enter(f, 26 + i * 6, DUR.heading + 2, OFFSET.heading);
-  const pop = spring({frame: f - 40, fps, config: {damping: 18, stiffness: 130}});
-  const textLeft = v ? 90 : 170;
-  const textW = v ? L.width - 180 : 1000;
-  const align = v ? 'center' : 'left';
-  const rows = v
-    ? {lock: 330, cta: 980, action: 1180, tag: 1290, preview: 1420}
-    : {lock: 150, cta: 430, action: 610, tag: 690, preview: 800};
-  const block = (i: number, top: number, style: React.CSSProperties, text: string) => {
-    const e = item(i);
-    return (
+  // Panel sits clear of both characters so they stay visible beside the CTA.
+  const panel = v ? {x: 70, y: 210, w: 940, h: 820} : {x: 530, y: 110, w: 860, h: 800};
+  const grow = spring({frame: f, fps, config: {damping: 200, stiffness: 120}, durationInFrames: 24});
+  const item = (i: number) => enter(f, 18 + i * 6, DUR.heading + 2, OFFSET.heading);
+  const k = v ? 1 : 0.92;
+  const rows = [
+    {top: 70, size: 100 * k, weight: 700, color: COLORS.white, spacing: 5, text: 'ASSESS SHIFT'},
+    {top: 70 + 118 * k, size: 36 * k, weight: 700, color: COLORS.softRose, spacing: 9, text: 'CAREER COACHING'},
+    {top: 330 * k, size: 68 * k, weight: 700, color: COLORS.white, spacing: 0, text: END_CARD.cta},
+    {top: 330 * k + 180 * k, size: 40 * k, weight: 500, color: COLORS.softRose, spacing: 0, text: END_CARD.action},
+    {top: 330 * k + 260 * k, size: 32 * k, weight: 500, color: 'rgba(255,255,255,0.78)', spacing: 0, text: END_CARD.tagline},
+    {top: panel.h - 70, size: 22 * k, weight: 700, color: 'rgba(245,233,233,0.6)', spacing: 3, text: END_CARD.url ?? 'PREVIEW · REGISTRATION LINK TO BE ADDED'},
+  ];
+  return (
+    <AbsoluteFill>
       <div
         style={{
           position: 'absolute',
-          top,
-          left: textLeft,
-          width: textW,
-          textAlign: align,
-          fontFamily: FONT.family,
-          ...style,
-          opacity: e.opacity * ((style.opacity as number | undefined) ?? 1),
-          transform: `translateY(${e.offset}px)`,
+          left: panel.x,
+          top: panel.y,
+          width: panel.w,
+          height: panel.h,
+          borderRadius: 44,
+          background: COLORS.deepBurgundy,
+          boxShadow: '0 30px 80px rgba(58,10,16,0.25)',
+          opacity: Math.min(1, grow * 1.5),
+          transform: `scale(${0.94 + 0.06 * grow})`,
+          overflow: 'hidden',
         }}
       >
-        {text}
+        {/* the burgundy path arrives as the panel's accent line */}
+        <svg width={panel.w} height={panel.h} style={{position: 'absolute', inset: 0}}>
+          <circle cx={panel.w - 60} cy={70} r={220} fill={COLORS.burgundy} opacity={0.35} />
+          <Stroke d={`M${panel.w / 2 - 150} ${(70 + 118 * k + 70)} H${panel.w / 2 + 150}`} drawn={clamp01(f, 24, 48, EASE_IN_OUT)} width={5} color={COLORS.burgundy} />
+        </svg>
+        {rows.map((r, i) => {
+          const e = item(i);
+          return (
+            <div
+              key={i}
+              style={{
+                position: 'absolute',
+                top: r.top,
+                left: 50,
+                right: 50,
+                textAlign: 'center',
+                fontFamily: FONT.family,
+                fontWeight: r.weight,
+                fontSize: r.size,
+                letterSpacing: r.spacing,
+                lineHeight: 1.12,
+                color: r.color,
+                opacity: e.opacity,
+                transform: `translateY(${e.offset}px)`,
+              }}
+            >
+              {r.text}
+            </div>
+          );
+        })}
       </div>
-    );
-  };
-  return (
-    <AbsoluteFill>
-      <Svg L={L}>
-        <circle cx={L.stage.x} cy={L.stage.y} r={R * wipe} fill={COLORS.deepBurgundy} />
-      </Svg>
-      {block(0, rows.lock, {fontWeight: 700, fontSize: v ? 104 : 96, letterSpacing: 5, color: COLORS.white}, 'ASSESS SHIFT')}
-      {block(1, rows.lock + (v ? 130 : 118), {fontWeight: 700, fontSize: v ? 40 : 36, letterSpacing: 9, color: COLORS.softRose}, 'CAREER COACHING')}
-      {block(2, rows.cta, {fontWeight: 700, fontSize: v ? 72 : 66, lineHeight: 1.12, color: COLORS.white}, END_CARD.cta)}
-      {block(3, rows.action, {fontWeight: 500, fontSize: v ? 42 : 38, color: COLORS.softRose}, END_CARD.action)}
-      {block(4, rows.tag, {fontWeight: 500, fontSize: v ? 34 : 30, color: COLORS.white, opacity: 0.75}, END_CARD.tagline)}
-      {block(
-        5,
-        rows.preview,
-        {fontWeight: 700, fontSize: v ? 26 : 22, letterSpacing: 3, color: COLORS.softRose, opacity: 0.6},
-        END_CARD.url ?? 'PREVIEW · REGISTRATION LINK TO BE ADDED',
-      )}
-      {(['samir', 'nour'] as const).map((who, i) => (
-        <Portrait
-          key={who}
-          who={who}
-          x={v ? L.stage.x + (i === 0 ? -150 : 150) : 1410 + i * 270}
-          y={v ? 740 : 470}
-          d={v ? 220 : 220}
-          scale={pop}
-          opacity={Math.min(1, pop * 1.4)}
-          bg={COLORS.ivory}
-          ring={COLORS.burgundy}
-          label={who === 'samir' ? 'Samir' : 'Nour'}
-          labelColor={COLORS.white}
-          caption="Career coach"
-        />
-      ))}
     </AbsoluteFill>
   );
 };

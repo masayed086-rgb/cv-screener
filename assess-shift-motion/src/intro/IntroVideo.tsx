@@ -1,7 +1,7 @@
 import {AbsoluteFill, Sequence, useCurrentFrame} from 'remotion';
 import '../fonts';
-import {COLORS, FONT} from '../brand';
-import {Coaches} from './coaches';
+import {COLORS} from '../brand';
+import {Cast} from './cast';
 import {LAYOUTS, type FormatId} from './formats';
 import {SceneBrand, SceneCompare, SceneEnd, SceneOptions, ScenePackages, ScenePlan, SceneQuestion, SceneUnderstand} from './scenes';
 import {sceneById} from './script';
@@ -18,13 +18,27 @@ const SCENES = [
 
 export type IntroProps = {format: FormatId};
 
+// Soft rose backdrop shapes with slow, restrained drift for depth.
+const Backdrop: React.FC<{format: FormatId; frame: number}> = ({format, frame}) => {
+  const L = LAYOUTS[format];
+  const dx = Math.sin(frame / 190) * 14;
+  const dy = Math.cos(frame / 230) * 10;
+  const r = L.vertical ? 470 : 420;
+  return (
+    <svg width={L.width} height={L.height} style={{position: 'absolute', inset: 0}}>
+      <circle cx={L.stage.x + dx} cy={L.stage.y - (L.vertical ? 40 : 30) + dy} r={r} fill={COLORS.softRose} opacity={0.7} />
+      <circle cx={L.stage.x + (L.vertical ? 330 : 640) - dx * 1.6} cy={L.stage.y + (L.vertical ? -470 : -300) - dy} r={L.vertical ? 120 : 110} fill={COLORS.softRose} opacity={0.55} />
+    </svg>
+  );
+};
+
 export const IntroVideo: React.FC<IntroProps> = ({format}) => {
   const L = LAYOUTS[format];
   const frame = useCurrentFrame();
   const end = sceneById('end');
-  const onEndCard = frame >= end.from + 20;
   return (
     <AbsoluteFill style={{background: COLORS.ivory}}>
+      <Backdrop format={format} frame={frame} />
       {SCENES.map(([id, Scene]) => {
         const s = sceneById(id);
         return (
@@ -33,26 +47,10 @@ export const IntroVideo: React.FC<IntroProps> = ({format}) => {
           </Sequence>
         );
       })}
-      <Coaches L={L} frame={frame} />
+      <Cast L={L} frame={frame} />
       <Sequence from={end.from} durationInFrames={end.dur} layout="none">
         <SceneEnd L={L} />
       </Sequence>
-      <div
-        style={{
-          position: 'absolute',
-          bottom: L.draftLabel.bottom,
-          width: '100%',
-          textAlign: 'center',
-          fontFamily: FONT.family,
-          fontWeight: 700,
-          fontSize: L.draftLabel.size,
-          letterSpacing: 3,
-          color: onEndCard ? COLORS.softRose : COLORS.charcoal,
-          opacity: 0.4,
-        }}
-      >
-        SILENT DRAFT · REFERENCE-CROP COACHES · v0.3
-      </div>
     </AbsoluteFill>
   );
 };

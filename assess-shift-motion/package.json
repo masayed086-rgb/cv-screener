@@ -5,11 +5,12 @@
   "scripts": {
     "studio": "remotion studio src/index.ts",
     "typecheck": "tsc -p .",
-    "still": "remotion still src/index.ts CareerCoachingPractice --browser-executable=${BROWSER_EXECUTABLE:-/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell}",
-    "render": "remotion render src/index.ts CareerCoachingPractice out/career-coaching-practice-silent.mp4 --browser-executable=${BROWSER_EXECUTABLE:-/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell}",
+    "still": "remotion still src/index.ts IntroReels --browser-executable=${BROWSER_EXECUTABLE:-/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell}",
+    "render": "remotion render src/index.ts ConversationStudy out/conversation-study-silent.mp4 --browser-executable=${BROWSER_EXECUTABLE:-/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell}",
     "render:reels": "remotion render src/index.ts IntroReels out/assess-shift-intro-reels-silent.mp4 --browser-executable=${BROWSER_EXECUTABLE:-/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell}",
     "render:linkedin": "remotion render src/index.ts IntroLinkedIn out/assess-shift-intro-linkedin-silent.mp4 --browser-executable=${BROWSER_EXECUTABLE:-/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell}",
-    "render:intro": "npm run render:reels && npm run render:linkedin"
+    "render:intro": "npm run render:reels && npm run render:linkedin",
+    "check": "esbuild checks/check_rig.ts --bundle --platform=node --format=esm --outfile=out/.check_rig.mjs --log-level=warning && node out/.check_rig.mjs"
   },
   "dependencies": {
     "@fontsource/quicksand": "^5.3.0",

@@ -1,67 +1,35 @@
-# Career coaching motion graphics
+# ASSESS SHIFT motion production instructions
 
-Act as a motion designer and video engineer. Build editable, reproducible explainer videos for ASSESS SHIFT. Treat these files as project instructions and creative references, not model fine-tuning.
+Act as a motion designer and video engineer. Create original editable career coaching explainers. These instructions supply project context and working examples; they do not fine-tune a model.
 
-## Read before building
+## Read and inspect
 
-- Read `README.md`, `MOTION_PLAYBOOK.md`, `MOTION_TRAINING.md`, `HOW_TO_USE.md`, `CHARACTER_ROLES.md`, `CHARACTER_APPEARANCE.md`, `PRACTICE_BRIEF.md`, and `REFERENCE_NOTES.md`.
-- Read `brand/ASSESS_SHIFT_Claude_Code_Brief.md` for the service, brand, characters and provisional full-video script.
-- Inspect supplied character artwork before using it. Samir is the male coach; Nour is the female coach. Both are coaches, with equal status and prominence.
-- Inspect the existing repository and preserve its working video framework. For a new project, prefer React + TypeScript + Remotion. Check current official documentation before using unfamiliar APIs.
+Read README.md, HOW_TO_USE.md, CHARACTER_ROLES.md, CHARACTER_APPEARANCE.md, CHARACTER_MOTION_BIBLE.md, MOTION_TRAINING.md, MOTION_PLAYBOOK.md, PRACTICE_BRIEF.md, RIG_ASSET_MAP.json and REFERENCE_NOTES.md. Read brand/ASSESS_SHIFT_Claude_Code_Brief.md for service facts and scripts. Inspect the two new PNG sheets, actual SVG rig groups, CharacterMotion.mjs and the rendered motion study.
 
-## Reference handling
+The current cast is Layla, a female career coach, and Omar, a male coachee. They replace all previous character designs. Omar is an experienced professional and owns his career decision. Layla facilitates exploration, asks and listens. One external narrator explains the service; no lip sync in the first version.
 
-- Reference: https://www.youtube.com/watch?v=hAP2QF--2Dg
-- Record what you can actually inspect. A link or still frame does not prove motion, easing, sound or transition timing.
-- Separate observed facts, published creator statements and proposed adaptations.
-- If playback is unavailable, use supplied frames or a rights-cleared local clip. Keep unverified motion details labelled as proposals and continue building a useful draft.
-- Create original artwork and transitions suitable for our brand. Do not reuse the reference's logo, illustrations, music or voiceover without permission.
+## Character performance
 
-## Visual and character rules
+Preserve mature anatomy, face, complexion, hair and wardrobe. Match the detailed new model sheet for final art. The supplied SVG rigs are simpler original vector redraws that demonstrate movement. They do not reproduce every detail of the generated PNG. Identify prototype artwork clearly.
 
-- One main message and one main visual action per shot. Make the story understandable with sound off.
-- Palette: burgundy #91212E, deep burgundy #3A0A10, charcoal #242427, ivory #FAF7F2, soft rose #F5E9E9.
-- Use Quicksand headlines where approved local font files are available. Document any fallback. Verify Arabic shaping and RTL layout in Arabic versions.
-- Preserve each coach's face, hair, complexion, outfit and proportions. Neither coach is a client. Keep both professionally capable.
-- Use the updated natural photographic reference in `brand/Realistic_Coach_Reference.png`. It replaces the earlier illustrated appearance. Match skin texture, anatomy, hair strands, fabric, age and lighting.
-- Nour leads career questions and option exploration; Samir leads assessment insights and practical planning. Both introduce the service, packages and CTA. Follow `CHARACTER_ROLES.md`; these are creative presentation roles.
-- The PNG board and `brand/ASSESS_SHIFT_Realistic_Coaches.svg` are character references. The SVG embeds the same PNG and has no editable vector body parts. Neither is an animation rig. Use identified placeholders if separate approved pose assets are missing.
-- Move photographic cutouts as a whole, use limited camera depth, or crossfade compatible poses. Do not bend photographic limbs or simulate talking without suitable mouth assets and reviewed timing. A true articulated gesture needs a rig or a verified video asset.
+Animate through joint pivots: torso → upper arm → forearm → hand. Place eyes and eyelids inside the head. Keep feet planted in conversational shots. Use gaze, anticipation, a clear gesture, a purposeful hold and a settle. Delay the listener’s response. Do not replace articulated action with sliding the entire character image. Keep text still while it is being read.
 
-## Motion and code rules
+Prepare separate production layers for seated acting, prop handling and writing. A PNG board or SVG with an embedded PNG does not contain an articulated rig. Never pretend a missing action is implemented. Check hand contact with notebook, pen or cards through every relevant frame.
 
-- Derive animation state from frame number. In Remotion use `useCurrentFrame`, `useVideoConfig`, `interpolate`, `spring` and `Sequence` as appropriate.
-- Avoid CSS keyframe animation, elapsed-time timers, unseeded randomness or network-dependent assets in export-critical animation.
-- Centralize brand tokens, easing, durations and spacing. Use the playbook's proposed timings until reviewed.
-- Stagger related elements. Keep text stationary while it is being read. Use movement to explain relationships.
-- Preserve visual continuity across cuts: carry a card, path, shape or focal position between scenes where it helps comprehension.
-- Separate scene timing, text, artwork and audio from rendering components. Keep CTA and aspect ratio configurable.
+## Build and review
 
-## Production workflow
+Use the existing working renderer. For a fresh code project, evaluate Remotion against its current official documentation before implementing APIs. Keep motion deterministic from the frame number, with no elapsed-time timers, CSS keyframe animations, unseeded randomness or export-time network assets. Separate art, timing, audio and copy.
 
-1. Audit available assets and software. Record specific missing production assets.
-2. Write a scene plan with time range, narration, headline, visual, motion and transition.
-3. Design key frames before detailed animation.
-4. Build the 12-second practice composition first. Render a silent draft and inspect it.
-   When asked to learn motion, complete the eight controlled exercises in `MOTION_TRAINING.md` before integrating them. Compare alternative versions with one variable changed.
-5. Apply review feedback, then record accepted rules in `MOTION_PLAYBOOK.md` and an approved example in the project.
-6. Extend to the full script only when asked. Align final scene timing to actual voiceover.
-7. Check every scene, render the final export, and provide commands that were actually used.
+Start with the supplied eight-second character study. Implement and review exercises before the full 75-second video. Inspect anticipation, extremes, blinks, pose transitions and prop contact. Render a silent draft and report the actual output path, dimensions, fps and duration. Claim a final narrated export only when the file exists and has been checked.
 
-## Claims and delivery
+## Brand and service
 
-- Do not invent assessment scores, testimonials, prices, accreditation, guaranteed jobs or a free Chemistry Session.
-- Client owns career decisions. Coaching helps explore options and build a practical plan.
-- A missing registration URL must remain a documented dependency. Never create a misleading placeholder booking QR.
-- Deliver editable source, a scene timing file, representative preview frames, MP4 if successfully rendered, and a README with working preview/export commands.
-- Verify output dimensions, duration, frame rate, clipping, text readability, character identity and sound. State what was checked and what remains unresolved.
-- Label a silent draft clearly. Do not claim narration, final captions or an MP4 exists unless the relevant files exist and were inspected.
+Burgundy #91212E, deep burgundy #3A0A10, charcoal #242427, ivory #FAF7F2 and soft rose #F5E9E9. Omar’s slate teal #385A61 and taupe #BDAE97 are wardrobe accents. Quicksand headlines with approved local fonts; document fallbacks. Verify Arabic shaping and mixed-language names.
 
-## Motion learning and review
+Keep the exact package facts in the brand brief. Personality insight belongs only to selected journeys. No invented scores, client outcomes, accreditation claims, job guarantees or salary promises. CTA: Start with a Chemistry Session. Submit your registration request. Do not describe the session as free or assign a duration without verified information. Use a live registration URL only when supplied; keep missing destinations visibly marked in previews.
 
-- Use `examples/MotionRecipes.tsx` as a starter implementation. Integrate it into an existing Remotion project; do not overwrite its entry point.
-- Convert seconds to frames with the composition's fps. Record frame ranges as start-inclusive and end-exclusive.
-- In a Sequence, use local frame time for local events. Convert global markers explicitly; do not subtract the scene start twice.
-- Add anticipation only to explanatory graphic actions, with small offsets. Keep realistic coach movement calm and anatomically plausible.
-- Specify every motion by trigger frame, duration, distance, easing, reading hold and exit/transition. Avoid vague requests such as 'make it more dynamic'.
-- After review, retain the accepted source, rendered example and rationale. Add only accepted general rules to the playbook. Do not call an unreviewed sample an approved style.
+Use the actual reviewed voiceover as the timing master. Produce captions from that recording. Hold the final CTA for at least three seconds. English and Arabic are separate versions; adapt vertical and landscape layouts independently.
+
+## Reference evidence
+
+Primary new reference: https://www.youtube.com/watch?v=jYKPJuKqBwo . The title and creator were inspected, but playback frames could not be viewed. Exact motion, sound and timings are unverified. Keep proposed timings distinct from observed details. If a rights-cleared local clip is supplied, analyze it before claiming a close match. Create original artwork; do not copy the reference’s assets.

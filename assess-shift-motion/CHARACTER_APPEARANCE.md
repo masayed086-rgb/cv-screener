@@ -1,53 +1,20 @@
-# Realistic appearance and asset preparation
+# Character appearance
 
-The new visual reference is `brand/Realistic_Coach_Reference.png`. It replaces the earlier cartoon-like appearance for this campaign. The characters remain fictional coaches; their faces do not represent named employees or establish credentials.
+Layla and Omar are original fictional Egyptian / Middle Eastern adults. Preserve the identity in Coach_Coachee_Model_Sheet.png across angles, expressions and animation. Use mature semi-realistic 2D illustration, natural human proportions, readable silhouettes, believable hands and restrained cel shading.
 
-## Appearance specification
-
-| Attribute | Samir | Nour |
+| Feature | Layla the coach | Omar the coachee |
 | --- | --- | --- |
-| Age | Approximately 42–48 | Approximately 38–42 |
-| Face | Olive-brown complexion, natural brown eyes, short neat beard, subtle age detail | Warm olive complexion, natural brown eyes, oval face, subtle age detail |
-| Hair | Short dark brown hair, subtle grey at temples | Shoulder-length dark brown waves, side part |
-| Wardrobe | Burgundy blazer, ivory open-collar shirt, charcoal trousers, dark leather shoes | Burgundy blazer, ivory softly open-neck blouse, charcoal trousers, flat dark loafers |
-| Finish | Natural skin, individual hair strands, realistic adult proportions, fabric folds | Same finish, lighting and level of detail |
-| Expression | Attentive, curious, encouraging | Attentive, curious, encouraging |
+| Proposed age | About 44 | About 37 |
+| Skin | Warm medium olive | Warm olive |
+| Hair | Dark, shoulder-length, gently wavy, side part | Short dark textured side part |
+| Facial detail | Natural brown eyes, small earrings | Natural brown eyes, short tidy beard |
+| Wardrobe | Burgundy blazer, ivory blouse, charcoal trousers, flat loafers | Slate teal shirt, rolled sleeves, taupe chinos, dark leather shoes |
+| Presence | Attentive, curious, grounded | Thoughtful, experienced, increasingly engaged |
 
-Use soft, warm studio light from the same direction in all assets. Avoid oversized eyes, porcelain skin, extreme beauty retouching, wide fixed smiles and anatomy that changes between poses. Do not change a face to produce an expression.
+The PNG sheets include front, three-quarter, profile and seated reference poses. These are design references. Inbetween animation requires compatible layers or a separately prepared animation asset. The simplified SVG study shares the characters’ identity cues and palette but is a vector redraw with less detail. Do not present it as an exact vectorization of the detailed PNG.
 
-## Required separate assets for each coach
+For final production, split the approved illustration into torso, neck, head, back hair, front hair, eyes, eyelids, eyebrows, upper arms, forearms, hands, thighs, calves and shoes. Draw hidden overlap around joints. Keep a consistent camera angle within a rig; use a prepared alternate-view rig for turns rather than distorting a frontal face into a profile. Separate seated and standing anatomy as needed.
 
-1. Neutral full-body standing pose, front or three-quarter.
-2. Seated listening pose with notebook.
-3. Open-hand invitation toward option cards.
-4. Reviewing insights pose.
-5. Presenting a next-step plan pose.
-6. Head-and-shoulders portrait with neutral, curious and encouraging variants.
+Provide hands for relaxed rest, open palm, card grip, notebook support and pen grip. Check each pose for fingers, wrist alignment and perspective. The study’s simple relaxed/open hand silhouettes are only mechanical examples. Props must attach to the gripping hand or follow a checked constraint, with a second hand supporting the notebook where needed.
 
-Export each needed pose on genuine transparency as a separate high-resolution PNG. Keep the same canvas, approximate body scale and grounded foot position across standing poses. Record a foot anchor and face anchor in an asset manifest. Ensure source resolution is sufficient for the largest on-screen scale.
-
-Suggested filenames: `samir-standing-3q.png`, `samir-listening-seated.png`, `samir-presenting-plan.png`, `nour-standing-3q.png`, `nour-listening-seated.png`, `nour-exploring-options.png`. These names are planned assets, not claims that those files are included.
-
-## Asset prompt for Claude to pass to an image tool
-
-```text
-Use the supplied Realistic_Coach_Reference.png as the identity reference. Generate [Samir or Nour] in [specified pose]. Preserve the recognizable face, age, complexion, hair, outfit and adult proportions. Match natural photographic detail and soft warm studio lighting. Keep full body and shoes visible. Use genuine transparent background. No text, logos, credentials, added people or props beyond [specified props]. Anatomically correct hands and natural expression. Do not redesign the character.
-```
-
-Claude Code needs a connected image-generation tool or supplied artwork to create photographic raster assets. If that capability is absent, it should build with clearly marked placeholders and document the missing pose files.
-
-## How to move realistic characters
-
-| Method | Suitable use | Limit |
-| --- | --- | --- |
-| Whole-cutout translation | Entrance and layout change | Does not create a physical gesture |
-| Gentle scale and camera move | Focus and depth | Keep scale small; do not imply body movement |
-| Compatible pose crossfade | Listening → inviting; reviewing → presenting | Keep face position stable; watch for ghosting |
-| Layered rig | Hand, arm, head or body articulation | Requires prepared joint layers and anatomy review |
-| Verified character video | Talking or a complex gesture | Requires consistent identity and checked frames |
-
-For the first code-based video, use cutouts, compatible pose changes and an external narrator. Do not animate breathing by stretching the whole person. Do not make a still photograph appear to talk by scaling the mouth.
-
-## Included SVG
-
-`brand/ASSESS_SHIFT_Realistic_Coaches.svg` contains the complete realistic reference sheet as an embedded PNG. Claude can use it as an image/reference layer; it cannot manipulate individual arms, faces or poses as vector paths. Keep separate pose PNGs or prepared rigs for character animation.
+Use one external narrator initially. Keep mouths still with restrained expressions. Lip sync would require reviewed audio, timed mouth shapes and separate implementation.

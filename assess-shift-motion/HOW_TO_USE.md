@@ -1,66 +1,28 @@
-# How to use the expanded pack in Claude Code
+# Use the new character motion pack
 
-## Prepare the project
+## Review the visual direction
 
-Extract the folder into the video project's root. Merge CLAUDE.md if one already exists. Keep the `brand/`, `examples/` and documentation folders beside it. Add approved logo files, transparent character poses, fonts and reviewed audio when available.
+Open the new model sheet and six acting key poses in brand/. Layla is the coach; Omar is the coachee. Watch preview/Character_Motion_Study.mp4. It demonstrates the mechanism with simpler vector art.
 
-Open Claude Code in that directory. Use `/context` to confirm the project instructions loaded. Use `/memory` to inspect persistent instructions and notes. CLAUDE.md is context, not model-weight training or guaranteed enforcement.
+## Give Claude persistent project context
 
-If you are using Claude's chat interface rather than Claude Code, upload the relevant markdown files and image, then paste the task prompt. Executing and rendering the code needs an environment with the project and dependencies; do not assume chat can run the local project.
+Place CLAUDE.md in the project root, merging existing instructions. Ask Claude to read it and the referenced files, then inspect the actual SVG groups and source. Use the starter prompt in README.md. This is project guidance and iteration, not model-weight training.
 
-## Session 1 Teach the motion vocabulary
+## Run the supplied working example
 
-```text
-Read CLAUDE.md, MOTION_TRAINING.md, MOTION_PLAYBOOK.md and the current brand references. Inspect the existing project and video framework. Start with Exercises 1 and 2. Build concrete A/B motion studies with one variable changed. Create editable source, preview frames, and silent renders if rendering is available. Inspect the actual outputs and document results. Keep reference observations separate from proposals. Use labelled placeholders where production assets are missing.
-```
-
-Review the studies. Ask for a specific change and retain the accepted example. Then repeat with Exercises 3–6. Work on Exercises 7–8 when the appropriate coach assets and voiceover are available.
-
-## Session 2 Prepare realistic coach assets
-
-```text
-Read CHARACTER_APPEARANCE.md and inspect brand/Realistic_Coach_Reference.png. Inventory the separate pose files needed for CHARACTER_ROLES.md. If an image-generation tool is connected, create identity-consistent transparent assets using the documented prompt. Otherwise create an asset manifest and clearly labelled placeholders, then build the composition around the planned poses. Do not claim the combined board is a rig. Keep the coaches realistic and use a single external narrator in the first version.
-```
-
-Check faces, hands, body scale and lighting across the pose set before character motion review.
-
-## Session 3 Build the practice
-
-```text
-Use the reviewed motion studies, realistic coach assets and CHARACTER_ROLES.md to build the 12-second practice. Produce a timeline, key frames, editable source and a silent render. Follow PRACTICE_BRIEF.md. Keep both coaches equally capable. Check phone-size text, transition boundaries, character continuity and deterministic seeking. Record accepted rules only after review.
-```
-
-## Session 4 Build the full video
-
-```text
-Build the full introduction using the current brand brief and CHARACTER_ROLES.md. Use the provisional 75-second plan at 1080x1920, 30 fps, then reflow the landscape version. Reuse accepted motion patterns selectively. Align final scene and caption timing to supplied voiceover. Preserve service facts and client decision ownership. Deliver an inspected draft, editable source, actual commands and specific missing production assets.
-```
-
-## Use the code examples
-
-The pack includes a TypeScript/React file with five Remotion compositions: easing comparison, card staging, path drawing, card continuity and camera depth. The recipes demonstrate graphics; they do not implement photographic character articulation.
-
-Ask Claude to copy `examples/MotionRecipes.tsx` into your existing Remotion source directory and import `MotionRecipeCompositions` into the project's existing registered root. Add `<MotionRecipeCompositions />` alongside existing compositions. Do not overwrite registration or delete existing compositions.
-
-In a configured Remotion project, these are intended CLI commands, to be verified against that project's actual entry point and installed version:
+Requirements: Node.js, Python 3, Inkscape and FFmpeg on PATH. Run from this folder:
 
 ```bash
-npx remotion studio
-npx remotion render src/index.ts EasingStudy out/easing-study.mp4
-npx remotion render src/index.ts CardStaging out/card-staging.mp4
-npx remotion render src/index.ts PathDrawing out/path-drawing.mp4
-npx remotion render src/index.ts CardContinuity out/card-continuity.mp4
-npx remotion render src/index.ts CameraDepth out/camera-depth.mp4
+node examples/check_character_motion.mjs
+python3 examples/render_character_study.py
 ```
 
-`src/index.ts` is an example entry path; use the actual project's registered entry file. The source examples were reviewed here, but compilation and rendering were not run because Remotion is unavailable in this environment. A new project must first be scaffolded and configured with compatible React, TypeScript, Remotion and CLI dependencies. Ask Claude to use current official setup documentation and the project's package manager.
+The render script writes 240 SVG frames, rasterizes them at 1920 × 1080 and creates preview/Character_Motion_Study.mp4 at 30 fps. It also regenerates the neutral vector rigs. The source does not require Remotion or npm dependencies. Rendering may take a few minutes.
 
-## Save learning accurately
+In a Remotion project, the poseAt(frame, character) and characterSVG(character, frame) exports can be evaluated using the current frame. The returned SVG markup can be placed inside a locally rendered SVG element. Verify integration against the current official documentation, keep font assets local and inspect the exported result. The included standalone renderer is the verified route; no Remotion compilation is claimed here.
 
-Ask Claude to record accepted global rules in MOTION_PLAYBOOK.md, scene exceptions in the scene notes, and working build commands in the project README. Keep CLAUDE.md concise. Use accepted render examples as comparison references on the next task.
+## Build toward the full campaign
 
-Sources: [Claude Code memory](https://code.claude.com/docs/en/memory), [Remotion fundamentals](https://www.remotion.dev/docs/the-fundamentals), [Remotion render CLI](https://www.remotion.dev/docs/cli/render).
+Review Exercises 1–4, then prepare matching final art for seated acting and props. Review comparison and writing contact before combining the sequence. Use character_scene_roles.json for the provisional 75-second timeline. Add the actual reviewed voiceover from voiceover/ and remap each spoken phrase to a scene. Generate captions from that recording, then hold the end CTA for at least three seconds.
 
-## Included SVG
-
-`brand/ASSESS_SHIFT_Realistic_Coaches.svg` contains the complete realistic reference sheet as an embedded PNG. Claude can use it as an image/reference layer; it cannot manipulate individual arms, faces or poses as vector paths. Keep separate pose PNGs or prepared rigs for character animation.
+Supply the approved logo, approved font files, live registration destination and any licensed music. Adapt vertical and landscape layouts separately. Ask for the actual MP4, source, render commands and a concise dependency list. Do not accept a slideshow as completion of an articulated character action.

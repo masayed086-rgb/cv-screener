@@ -1,0 +1,217 @@
+{
+  "status": "working simplified vector study; final detailed artwork needs matching layers",
+  "suffix_convention": "L and R mean screen-left and screen-right in this prototype; not anatomical left/right",
+  "view": "front with limited head rotation; not a 3D turn rig",
+  "files": {
+    "Layla": "brand/Layla_Rig.svg",
+    "Omar": "brand/Omar_Rig.svg",
+    "combined": "brand/ASSESS_SHIFT_Coach_Coachee.svg",
+    "source": "examples/CharacterMotion.mjs"
+  },
+  "active_gesture_chains": {
+    "Layla": "Layla_R_upperArm \u2192 Layla_R_forearm \u2192 Layla_R_hand",
+    "Omar": "Omar_L_upperArm \u2192 Omar_L_forearm \u2192 Omar_L_hand"
+  },
+  "hierarchy_note": "Torso stays fixed in the study. Its arm and head groups share the root; in a torso-moving production rig, wrap them in a torso control group or propagate its transform.",
+  "coordinate_space": "local SVG user units before scene scale; pivots belong to the stated parent",
+  "groups": [
+    {
+      "id": "Layla_root",
+      "parent": null,
+      "purpose": "character placement; fixed in study"
+    },
+    {
+      "id": "Layla_legs",
+      "parent": "Layla_root",
+      "purpose": "fixed legs and shoes; no walking rig"
+    },
+    {
+      "id": "Layla_torso",
+      "parent": "Layla_root",
+      "purpose": "fixed torso silhouette"
+    },
+    {
+      "id": "Layla_head",
+      "parent": "Layla_root",
+      "pivot": [
+        0,
+        120
+      ],
+      "purpose": "head and neck pivot"
+    },
+    {
+      "id": "Layla_L_upperArm",
+      "parent": "Layla_root",
+      "pivot_in_parent": [
+        -46,
+        149
+      ]
+    },
+    {
+      "id": "Layla_L_forearm",
+      "parent": "Layla_L_upperArm",
+      "pivot_in_parent": [
+        0,
+        88
+      ]
+    },
+    {
+      "id": "Layla_L_hand",
+      "parent": "Layla_L_forearm",
+      "pivot_in_parent": [
+        0,
+        84
+      ]
+    },
+    {
+      "id": "Layla_R_upperArm",
+      "parent": "Layla_root",
+      "pivot_in_parent": [
+        46,
+        149
+      ]
+    },
+    {
+      "id": "Layla_R_forearm",
+      "parent": "Layla_R_upperArm",
+      "pivot_in_parent": [
+        0,
+        88
+      ]
+    },
+    {
+      "id": "Layla_R_hand",
+      "parent": "Layla_R_forearm",
+      "pivot_in_parent": [
+        0,
+        84
+      ]
+    },
+    {
+      "id": "Layla_eye_L",
+      "parent": "Layla_head",
+      "pivot_in_parent": [
+        -14,
+        61
+      ],
+      "purpose": "eye shape, pupils and blink scale"
+    },
+    {
+      "id": "Layla_eye_R",
+      "parent": "Layla_head",
+      "pivot_in_parent": [
+        15,
+        61
+      ],
+      "purpose": "eye shape, pupils and blink scale"
+    },
+    {
+      "id": "Omar_root",
+      "parent": null,
+      "purpose": "character placement; fixed in study"
+    },
+    {
+      "id": "Omar_legs",
+      "parent": "Omar_root",
+      "purpose": "fixed legs and shoes; no walking rig"
+    },
+    {
+      "id": "Omar_torso",
+      "parent": "Omar_root",
+      "purpose": "fixed torso silhouette"
+    },
+    {
+      "id": "Omar_head",
+      "parent": "Omar_root",
+      "pivot": [
+        0,
+        120
+      ],
+      "purpose": "head and neck pivot"
+    },
+    {
+      "id": "Omar_L_upperArm",
+      "parent": "Omar_root",
+      "pivot_in_parent": [
+        -46,
+        149
+      ]
+    },
+    {
+      "id": "Omar_L_forearm",
+      "parent": "Omar_L_upperArm",
+      "pivot_in_parent": [
+        0,
+        88
+      ]
+    },
+    {
+      "id": "Omar_L_hand",
+      "parent": "Omar_L_forearm",
+      "pivot_in_parent": [
+        0,
+        84
+      ]
+    },
+    {
+      "id": "Omar_R_upperArm",
+      "parent": "Omar_root",
+      "pivot_in_parent": [
+        46,
+        149
+      ]
+    },
+    {
+      "id": "Omar_R_forearm",
+      "parent": "Omar_R_upperArm",
+      "pivot_in_parent": [
+        0,
+        88
+      ]
+    },
+    {
+      "id": "Omar_R_hand",
+      "parent": "Omar_R_forearm",
+      "pivot_in_parent": [
+        0,
+        84
+      ]
+    },
+    {
+      "id": "Omar_eye_L",
+      "parent": "Omar_head",
+      "pivot_in_parent": [
+        -14,
+        61
+      ],
+      "purpose": "eye shape, pupils and blink scale"
+    },
+    {
+      "id": "Omar_eye_R",
+      "parent": "Omar_head",
+      "pivot_in_parent": [
+        15,
+        61
+      ],
+      "purpose": "eye shape, pupils and blink scale"
+    }
+  ],
+  "implemented": [
+    "independent shoulder/elbow/wrist rotations",
+    "small head rotation",
+    "pupil direction",
+    "independent blinks",
+    "fixed legs",
+    "relaxed/open hand variants"
+  ],
+  "not_implemented": [
+    "seated rigs",
+    "writing",
+    "prop contact",
+    "inverse kinematics",
+    "walking",
+    "lip sync",
+    "full introduction",
+    "final detailed art"
+  ]
+}

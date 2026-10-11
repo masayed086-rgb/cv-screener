@@ -20,17 +20,6 @@ export const FONT = {
 // Composition margins for the 1080x1920 master (from the brand brief).
 export const SAFE = {left: 90, right: 90, top: 180, bottom: 300} as const;
 
-export const CHARACTERS = {
-  samir: {
-    name: 'Samir',
-    skin: '#A87556',
-    hair: '#33241C',
-    grey: '#9A948E',
-  },
-  nour: {
-    name: 'Nour',
-    skin: '#C48E6C',
-    hair: '#3A261E',
-    grey: '#3A261E',
-  },
-} as const;
+// Omar's wardrobe accents (CLAUDE.md); character colours live in src/rig/Character.tsx.
+export const OMAR_TEAL = '#385A61';
+export const OMAR_TAUPE = '#BDAE97';

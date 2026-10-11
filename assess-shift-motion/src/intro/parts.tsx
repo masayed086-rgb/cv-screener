@@ -1,7 +1,6 @@
-import {Img, interpolate, staticFile} from 'remotion';
+import {interpolate} from 'remotion';
 import {COLORS, FONT} from '../brand';
 import {DUR, EASE_IN_OUT, EASE_OUT, OFFSET, enter} from '../motion';
-import {PORTRAITS} from '../coachAssets';
 import type {Layout} from './formats';
 
 export const clamp01 = (frame: number, a: number, b: number, easing = EASE_OUT) =>
@@ -241,37 +240,3 @@ export const Stroke: React.FC<{d: string; drawn: number; trimmed?: number; width
       opacity={opacity}
     />
   );
-
-// Head-and-shoulders photo of a coach inside a circle (interim reference crop).
-export const Portrait: React.FC<{
-  who: 'samir' | 'nour';
-  x: number;
-  y: number;
-  d: number;
-  expression?: 'listening' | 'curious' | 'encouraging';
-  scale?: number;
-  opacity?: number;
-  bg?: string;
-  ring?: string;
-  label?: string;
-  labelColor?: string;
-  caption?: string;
-}> = ({who, x, y, d, expression = 'encouraging', scale = 1, opacity = 1, bg = COLORS.softRose, ring = COLORS.burgundy, label, labelColor = COLORS.charcoal, caption}) => {
-  if (opacity <= 0.001) return null;
-  return (
-    <div style={{position: 'absolute', left: x - d / 2, top: y - d / 2, width: d, opacity, transform: `scale(${scale})`}}>
-      <div style={{width: d, height: d, borderRadius: '50%', overflow: 'hidden', background: bg, position: 'relative', boxShadow: `0 0 0 6px ${ring}`}}>
-        <Img
-          src={staticFile(PORTRAITS[`${who}-${expression}`])}
-          style={{position: 'absolute', left: '-14%', top: '4%', width: '128%', height: '100%', objectFit: 'cover', objectPosition: '50% 20%'}}
-        />
-      </div>
-      {label && (
-        <div style={{marginTop: 22, textAlign: 'center', fontFamily: FONT.family, fontWeight: 700, fontSize: d * 0.15, color: labelColor}}>
-          {label}
-          {caption && <div style={{fontWeight: 500, fontSize: d * 0.1, opacity: 0.75, marginTop: 2}}>{caption}</div>}
-        </div>
-      )}
-    </div>
-  );
-};

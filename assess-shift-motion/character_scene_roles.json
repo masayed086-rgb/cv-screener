@@ -1,23 +1,29 @@
 {
-  "status": "provisional",
+  "status": "provisional; retime to reviewed narration",
   "fps": 30,
   "durationInFrames": 2250,
   "voice": "external narrator",
   "characters": {
-    "Samir": "assessment insight and transition planning",
-    "Nour": "career reflection and option exploration"
+    "Layla": {
+      "role": "coach",
+      "decision_owner": false
+    },
+    "Omar": {
+      "role": "coachee",
+      "decision_owner": true
+    }
   },
   "scenes": [
     {
       "startFrame": 0,
       "endFrameExclusive": 210,
-      "lead": "Nour",
+      "lead": "Omar",
       "purpose": "career_question"
     },
     {
       "startFrame": 210,
       "endFrameExclusive": 480,
-      "lead": "Graphics",
+      "lead": "Omar",
       "purpose": "career_options"
     },
     {
@@ -29,25 +35,25 @@
     {
       "startFrame": 750,
       "endFrameExclusive": 1140,
-      "lead": "Samir",
+      "lead": "Layla",
       "purpose": "assessment_insights"
     },
     {
       "startFrame": 1140,
       "endFrameExclusive": 1530,
-      "lead": "Nour",
+      "lead": "Omar",
       "purpose": "realistic_options"
     },
     {
       "startFrame": 1530,
       "endFrameExclusive": 1830,
-      "lead": "Samir",
+      "lead": "Omar",
       "purpose": "transition_plan"
     },
     {
       "startFrame": 1830,
       "endFrameExclusive": 2040,
-      "lead": "Both",
+      "lead": "Layla",
       "purpose": "packages"
     },
     {

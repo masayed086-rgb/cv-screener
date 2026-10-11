@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="800" viewBox="-160 -50 320 640"><title>Layla articulated motion prototype</title><g id="Layla_root">
+ <g id="Layla_legs"><path d="M-42 313 L-2 317 L-5 436 L-15 562 L-47 562 L-40 433 Z" fill="#343438" stroke="#222328" stroke-width="1.3"/><path d="M1 317 L42 313 L40 429 L48 562 L16 562 L5 435 Z" fill="#343438" stroke="#222328" stroke-width="1.3"/>
+ <path d="M-30 349 L-26 442 L-35 542 M29 349 L23 432 L34 544" stroke="#222328" fill="none" stroke-width="1.5" opacity=".65"/>
+ <path d="M-47 560 L-15 560 L-10 577 Q-25 587-60 583 Q-65 575-47 560 Z M16 560 L48 560 Q66 574 65 582 Q42 589 14 579 Z" fill="#282728" stroke="#141414" stroke-width="1.2"/>
+ <path d="M-56 579 Q-35 584-13 577 M18 576 Q42 583 62 580" fill="none" stroke="#5B4C42" stroke-width="1.4"/></g>
+ <g id="Layla_L_upperArm" transform="translate(-46 149) rotate(0)">
+ <path d="M-14-9 Q0-20 17-6 L19 84 Q12 101-13 96 L-21 26 Z" fill="#91212E" stroke="#601724" stroke-width="1.2"/>
+ <path d="M13 7 L14 73 Q11 86 5 91" fill="none" stroke="#601724" stroke-width="2" opacity=".5"/>
+ <g id="Layla_L_forearm" transform="translate(0 88) rotate(0)">
+ <path d="M-14-5 Q0-10 16-3 L12 82 Q0 91-11 83 Z" fill="#91212E" stroke="#601724" stroke-width="1.2"/>
+ <path d="M-11 76 L12 76 L11 88 L-10 88 Z" fill="#f3eee5"/>
+ <g id="Layla_L_hand" transform="translate(0 84) rotate(0)"><path d="M-10 0 L10 0 Q14 16 12 26 L10 43 Q9 48 5 46 L4 30 L2 47 Q1 52-3 49 L-4 29 L-7 43 Q-10 47-12 42 L-10 23 Q-16 30-20 26 Q-22 24-17 19 Z" fill="#D69E77" stroke="#8A563C" stroke-width="1.1"/><path d="M-6 9 Q0 13 7 9" fill="none" stroke="#8A563C" stroke-width=".8" opacity=".45"/></g></g></g>
+ <g id="Layla_torso"><path d="M-44 128 Q-15 116 0 125 Q17 116 43 128 L49 220 L41 321 Q0 334-42 321 L-50 220 Z" fill="#EEE6D9" stroke="#601724" stroke-width="1.2"/>
+ <path d="M-44 127 L-16 119 L-4 146 L-9 322 L-43 337 L-49 225 Z M16 119 L43 127 L48 225 L43 337 L9 322 L4 146 Z" fill="#91212E"/><path d="M-17 122 L-30 166 L-20 172 L-12 192 L-7 159 M17 122 L29 166 L20 172 L12 192 L7 159" fill="#601724" stroke="#AC4650" stroke-width="1"/><path d="M-4 146 L0 177 L5 146 M0 177 L0 301" stroke="#CBBDAA" fill="none"/><path d="M-40 278 L-16 275 L-15 284 L-39 287 M16 275 L39 278 L38 287 L16 284" fill="#601724"/><path d="M-41 172 Q-36 222-39 249 M40 173 Q35 225 39 250" fill="none" stroke="#B34551" stroke-width="1.3"/>
+ </g>
+ <g id="Layla_R_upperArm" transform="translate(46 149) rotate(0)">
+ <path d="M-14-9 Q0-20 17-6 L19 84 Q12 101-13 96 L-21 26 Z" fill="#91212E" stroke="#601724" stroke-width="1.2"/>
+ <path d="M13 7 L14 73 Q11 86 5 91" fill="none" stroke="#601724" stroke-width="2" opacity=".5"/>
+ <g id="Layla_R_forearm" transform="translate(0 88) rotate(0)">
+ <path d="M-14-5 Q0-10 16-3 L12 82 Q0 91-11 83 Z" fill="#91212E" stroke="#601724" stroke-width="1.2"/>
+ <path d="M-11 76 L12 76 L11 88 L-10 88 Z" fill="#f3eee5"/>
+ <g id="Layla_R_hand" transform="translate(0 84) rotate(0)"><path d="M-10 0 L10 0 Q14 16 12 26 L10 43 Q9 48 5 46 L4 30 L2 47 Q1 52-3 49 L-4 29 L-7 43 Q-10 47-12 42 L-10 23 Q-16 30-20 26 Q-22 24-17 19 Z" fill="#D69E77" stroke="#8A563C" stroke-width="1.1"/><path d="M-6 9 Q0 13 7 9" fill="none" stroke="#8A563C" stroke-width=".8" opacity=".45"/></g></g></g>
+ <g id="Layla_head" transform="rotate(0 0 120)">
+ <path d="M-35 26 Q-48 38-43 82 Q-55 104-39 131 Q-22 146 0 130 Q22 145 42 126 Q54 110 42 86 Q50 49 28 22 Z" fill="#3D2923"/>
+ <path d="M-12 91 L-14 123 Q0 141 15 124 L12 89 Z" fill="#D69E77" stroke="#8A563C" stroke-width=".8"/>
+ <path d="M-13 95 Q1 108 13 94 L13 108 Q0 119-13 111 Z" fill="#8A563C" opacity=".2"/>
+ <ellipse cx="-30" cy="67" rx="6" ry="11" fill="#D69E77"/><ellipse cx="30" cy="67" rx="6" ry="11" fill="#D69E77"/>
+ <path d="M-29 47 Q-30 16 1 15 Q32 16 30 47 L28 76 Q23 97 1 105 Q-23 98-28 78 Z" fill="#D69E77" stroke="#8A563C" stroke-width="1"/>
+ <path d="M19 39 Q30 65 19 82 Q12 94 1 98 Q24 96 29 76 L31 46 Z" fill="#8A563C" opacity=".14"/>
+ <path d="M-31 67 Q-34 38-25 23 Q-6 3 17 15 Q34 15 35 48 Q21 29 6 30 Q-12 48-30 53 Z" fill="#3D2923"/><path d="M-19 22 Q2 13 15 20 M-26 34 Q-4 34 8 20" fill="none" stroke="#755044" stroke-width="2"/><path d="M29 47 Q37 82 26 104 Q35 98 35 85" fill="none" stroke="#755044" stroke-width="2"/>
+ <path d="M-22 52 Q-13 48-6 52 M7 52 Q15 48 23 52" stroke="#3D2923" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+ <g id="Layla_eye_L" transform="translate(-14 61) scale(1 1)"><path d="M-8 0 Q0-6 8 0 Q0 5-8 0" fill="#fff7e9" stroke="#8A563C" stroke-width=".8"/><circle cx="0.3" cy="0" r="2.7" fill="#38291E"/><circle cx="-0.3" cy="-.8" r=".7" fill="white"/></g>
+ <g id="Layla_eye_R" transform="translate(15 61) scale(1 1)"><path d="M-8 0 Q0-6 8 0 Q0 5-8 0" fill="#fff7e9" stroke="#8A563C" stroke-width=".8"/><circle cx="0.3" cy="0" r="2.7" fill="#38291E"/><circle cx="-0.3" cy="-.8" r=".7" fill="white"/></g>
+ <path d="M1 62 L-2 76 Q2 79 6 76" stroke="#8A563C" stroke-width="1.2" fill="none"/>
+ <path d="M-10 87 Q0 92 11 86 Q0 97-10 87" fill="#A35F58"/><path d="M-9 87 Q1 90 10 86" fill="none" stroke="#6E3B34" stroke-width="1"/><circle cx="-32" cy="81" r="2.7" fill="#C9A76B"/><circle cx="32" cy="81" r="2.7" fill="#C9A76B"/>
+ </g>
+ </g></svg>

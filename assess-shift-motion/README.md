@@ -1,18 +1,19 @@
 # ASSESS SHIFT — motion graphics project
 
-A code-based motion graphics project for the ASSESS SHIFT career coaching campaign. It uses Remotion 4 (React + TypeScript), and every frame is a pure function of the frame number. Project instructions are in `CLAUDE.md`. The motion rules and correction log are in `MOTION_PLAYBOOK.md`, and the exercises in `MOTION_TRAINING.md`. Coach roles are in `CHARACTER_ROLES.md` (machine-readable copy: `character_scene_roles.json`), and appearance and asset rules in `CHARACTER_APPEARANCE.md`. The pack's own README is kept as `STARTER_README.md`.
+A code-based motion graphics project for the ASSESS SHIFT career coaching campaign. It uses Remotion 4 (React + TypeScript), and every frame is a pure function of the frame number. Project instructions are in `CLAUDE.md`. The cast and acting rules are in `CHARACTER_ROLES.md`, `CHARACTER_APPEARANCE.md` and `CHARACTER_MOTION_BIBLE.md`, and the rig layout is in `RIG_ASSET_MAP.json`. The pack's own README is kept as `STARTER_README.md`.
 
-**Status: v0.3 silent drafts.** The coaches now use the realistic photographic reference. They are **interim cut-outs cropped from the reference board** and labelled "REFERENCE CROP · NOT FINAL ART" on screen. There is still no voiceover, music or booking link.
+**Status: v1.0, final silent cut.** Layla (coach) and Omar (coachee) are animated through connected joints. The animation is final, but three inputs are still pending: the narration, the live registration link (the end card says PREVIEW until it is set) and final detailed character layers (see "Character art").
 
 ## Outputs
 
 | File | What it is |
 | --- | --- |
-| `out/assess-shift-intro-reels-silent.mp4` | **Reels**: 1080×1920, 30 fps, 2250 frames, 75.0 s, H.264, no audio |
-| `out/assess-shift-intro-linkedin-silent.mp4` | **LinkedIn**: 1920×1080, 30 fps, 2250 frames, 75.0 s, H.264, no audio, with its own reflowed layout |
-| `out/career-coaching-practice-silent.mp4` | 12 s practice, 1080×1920, 30 fps, 360 frames, no audio |
-| `out/studies/*.mp4` | The pack's five motion studies (easing, staging, path, continuity, depth), each 1920×1080, 6 s |
-| `out/stills/intro/*-storyboard.png`, `out/stills/contact.png` | Key frames |
+| `out/assess-shift-intro-reels.mp4` | **Instagram/Facebook Reels**: 1080×1920, 30 fps, 2250 frames, 75.0 s, H.264 (CRF 16), no audio |
+| `out/assess-shift-intro-linkedin.mp4` | **LinkedIn**: 1920×1080, 30 fps, 2250 frames, 75.0 s, H.264 (CRF 16), no audio, with its own layout |
+| `out/conversation-study-silent.mp4` | The pack's 8 s conversation study, rebuilt on the ported rig: 1920×1080, 30 fps, 240 frames |
+| `out/stills/*-storyboard.png` | Key frames from each intro |
+| `out/stills/pose-sheet.png`, `writing-closeup.png` | Every acting pose, plus a close-up of pen-on-page contact |
+| `out/studies/*.mp4` | The five graphic motion studies from the earlier pack |
 
 ## Commands
 
@@ -21,86 +22,79 @@ These are the commands used to produce the outputs above. Run them from this fol
 ```bash
 npm install
 npm run typecheck
-npm run studio                       # live preview / scrubbing in the browser
-npm run render:reels                 # -> out/assess-shift-intro-reels-silent.mp4
-npm run render:linkedin              # -> out/assess-shift-intro-linkedin-silent.mp4
-npm run render                       # -> out/career-coaching-practice-silent.mp4
-npx remotion render src/index.ts EasingStudy out/studies/easing-study.mp4 --browser-executable=$BROWSER_EXECUTABLE
-#   (likewise CardStaging, PathDrawing, CardContinuity, CameraDepth)
-python3 -I scripts/matte.py brand/Realistic_Coach_Reference.png public/coaches   # regenerate the interim coach cut-outs
+npm run check            # rig checks: determinism, joint limits, pen-tip contact
+npm run studio           # live preview / scrubbing
+npx remotion render src/index.ts IntroReels out/assess-shift-intro-reels.mp4 --crf=16 --browser-executable=$BROWSER_EXECUTABLE
+npx remotion render src/index.ts IntroLinkedIn out/assess-shift-intro-linkedin.mp4 --crf=16 --browser-executable=$BROWSER_EXECUTABLE
+npm run render           # -> out/conversation-study-silent.mp4
+npx remotion still src/index.ts PoseSheet out/stills/pose-sheet.png --browser-executable=$BROWSER_EXECUTABLE
 ```
 
-The npm render scripts pass `--browser-executable`, which on this machine points at the pre-installed Chromium headless shell. Elsewhere, set `BROWSER_EXECUTABLE`, or drop the flag and let Remotion download its own browser. The `matte.py` command rewrites the cut-out PNGs only. If you change a crop box, re-measure the anchors in `public/coaches/manifest.json` and `src/coachAssets.ts`.
+On this machine `BROWSER_EXECUTABLE` is `/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell`. Elsewhere, drop the flag and let Remotion download its own browser. The pack's standalone renderer (`examples/render_character_study.py`) needs Inkscape, which is not installed here, so the study was rendered through Remotion instead. The pack's own `node examples/check_character_motion.mjs` passes.
 
-## Coaches: how the photographic characters are used
+## The characters: how they move
 
-- **Source.** `scripts/boxes.py` crops 6 full-body poses and 6 portraits from `brand/Realistic_Coach_Reference.png`: standing front, standing three-quarter, and exploring options (holding two blank cards), plus listening / curious / encouraging portraits for each coach. `scripts/matte.py` removes the board's ivory background (a border flood-fill, soft edges, colour decontamination, and removal of floor shading), then upscales ×2 with Lanczos. The output is `public/coaches/*.png`, with measured head, feet and face anchors in `manifest.json`.
-- **Motion** follows `CHARACTER_APPEARANCE.md`. Each cut-out moves only as a whole: fade and slide entrances, plus pose changes. No limb is bent, nothing is stretched, there is no fake breathing and no lip movement. All poses share the same body height, floor line and face x-anchor.
-- **Pose changes are a 10-frame dip, not a full crossfade.** The old pose fades out over frames 0–6 and the new one fades in over 4–10. The reference poses have different head angles, so a 50/50 crossfade showed a double face (checked at the transition midpoint). This follows MOTION_TRAINING.md exercise 7, which says to prefer a cut over ghosting.
-- **Roles** follow `CHARACTER_ROLES.md`:
-  - Nour leads the opening question and the option comparison, switching to her open-hand pose at 38.7–48.3 s.
-  - Samir leads insights and planning, in the open-hand pose at 26.0–33.3 s and 52.0–59.7 s.
-  - The options scene is led by graphics, so neither coach gestures there.
-  - Both share the brand, packages and end card at equal size.
-- **Limits of the interim crops.** Each figure is about 340 px tall on the board, so it is upscaled about 1.6× on screen and looks soft up close. The edges are clean on the ivory background. They are not suitable for dark backgrounds, which is why only the circular portraits appear on the burgundy end card.
+- **Rig.** `src/rig/Character.tsx` is a port of the pack's `examples/CharacterMotion.mjs`. It keeps the same group ids, pivots and paths: shoulder (±46,149) → elbow (0,88) → wrist (0,84), with the head pivoting at the neck, and pupils and eyelids inside the head.
+- **What I added to the rig:**
+  - both arms can be posed, not just one gesture arm per character
+  - an arm can be drawn behind the torso, in front of it, or above the head, so it can cross the body (clasped hands, hand to chin)
+  - nods, a brow lift and vertical gaze
+  - a pen grip, with the pen drawn over the fingers
+  - Omar's watch on his left wrist, and Layla's loafer buckles
+  - light shading on the torso and cheeks
+- **Acting engine** (`src/rig/acting.ts`). Every channel is keyframed with smoothstep holds and settles, as in the prototype, and blinks follow the prototype's 2-1-2 frame shape. Each gesture is gaze lead, then a 6-frame anticipation, the action (20–24 frames), a hold and a settle. The listener reacts 4+ frames later, usually with a nod. Feet never move, and there is no sliding of whole characters.
+- **Writing.** I solved the arm angles with forward kinematics:
+  - the notebook rests on Omar's screen-left palm and follows it
+  - the pen tip lands on the right-hand page, and the wrist makes small strokes while the elbow stays put
+  - `npm run check` verifies the tip is on the page in all 108 writing frames (it never comes closer than 14.5 rig units to the page edge)
+  - a written line appears in the notebook with each stroke, and each line lands at the same moment as a plan milestone on screen
+- **Not implemented** (from the pack's own list):
+  - **Seated poses.** The six acting poses show the characters seated; the video keeps them standing, because there is no seated rig.
+  - **Walking and lip sync.** Mouths stay still for the external narrator.
+  - **Picking the notebook up.** The notebook and pen fade in as Omar's hand arrives; he isn't shown picking them up.
 
 ## Full introduction (75 s): `IntroReels` / `IntroLinkedIn`
 
-Both compositions render `src/intro/IntroVideo.tsx` with a layout from `src/intro/formats.ts`. Copy and timing are in `src/intro/script.ts`, coach poses and visibility in `src/intro/coaches.tsx`, and scenes in `src/intro/scenes.tsx`.
+`src/intro/` contains:
+- `script.ts`: copy and scene timing
+- `acting.ts`: the full performance for both characters
+- `cast.tsx`: the character layer
+- `scenes.tsx`: the graphics
+- `formats.ts`: the two layouts
 
-| Time | Scene | On screen | Motion |
+| Time | Lead (CHARACTER_ROLES.md) | On screen | Acting |
 | --- | --- | --- | --- |
-| 0–7 s | Question (Nour) | What comes **next?** | Nour enters, standing still. A burgundy path draws a question mark and the dot pops in. |
-| 7–16 s | Options (graphics) | A new role? **A new direction?** | Three equal option cards rise in with a stagger. Income / Family / Experience chips follow. Samir enters. |
-| 16–25 s | Brand (both) | ASSESS SHIFT · Career Coaching · by ASSESS International | A path line reveals the name. Samir's and Nour's photo portraits pop in at equal size. |
-| 25–38 s | Understand (Samir) | Understand **yourself** at work | Samir changes to the open-hand pose. Interests and Motivation cards appear, and paths link them to "Your experience". |
-| 38–51 s | Compare (Nour) | Explore **realistic** directions | Nour's open-hand pose. Skills / Market / Life priorities lenses visit each option for the same 46 frames, then all three hold equally. |
-| 51–61 s | Plan (Samir) | Build a **practical** transition plan | Samir's open-hand pose. The path progresses through Reflect, Test an option and Take the next step. |
-| 61–68 s | Packages (both) | Different levels of **support** | Career Clarity, Career Direction and Career Transformation, all treated identically. |
-| 68–75 s | End card (both) | Start with a Chemistry Session · Submit your registration request | A deep burgundy wipe, then the lockup, both portraits and the CTA. Static for about 4 s. Labelled PREVIEW until `END_CARD.url` is set. |
+| 0–7 s | Omar | What comes **next?** | Omar looks up and away, then moves his hand to his chin. A burgundy path draws a question mark. Layla listens and nods. |
+| 7–16 s | Omar | A new role? **A new direction?** | Omar's gaze moves card to card while his open hand presents the three options. Then the Income / Family / Experience chips appear. |
+| 16–25 s | Both | ASSESS SHIFT · Career Coaching | Layla opens her palm to invite Omar in, and Omar nods after a beat. The name is revealed behind the path, and name tags introduce the coach and the coachee. |
+| 25–38 s | Layla | Understand **yourself** at work | Layla presents Interests and Motivation, then Experience. Omar studies the cards and thinks it over, hand at his chin. |
+| 38–51 s | Omar | Explore **realistic** directions | Layla asks; Omar answers with an explanatory hand while she listens. The lenses (Skills, Market, Life priorities) visit each option for the same length of time. |
+| 51–61 s | Omar | Build a **practical** transition plan | Omar writes in his notebook. Each line he writes lands a milestone: Reflect, Test an option, Take the next step. |
+| 61–68 s | Layla | Different levels of **support** | Layla presents the three package cards, all treated identically. Omar looks, then turns back to her. |
+| 68–75 s | Both | Start with a Chemistry Session · Submit your registration request | Both settle with open hands and face the viewer, beside a deep burgundy CTA panel. The panel holds still for about 5 s. |
 
-**Timing is provisional.** It follows the storyboard, not a recording. Re-time `src/intro/script.ts` to the real voiceover and build captions from it.
+The headlines repeat the approved voiceover (`voiceover/`). There are no scores, prices, durations, guarantees or "free" claims, and Omar makes his own decision. **Timing is provisional:** once the narration is recorded, re-time `script.ts` and `acting.ts` to it.
 
-## Practice (12 s): `CareerCoachingPractice`
+## Character art
 
-This is the same choreography as v0.1, now with the photographic coaches. Nour switches to the open-hand pose at frame 96 and Samir at frame 100, as their insight cards arrive. Both return to standing at frame 272, for the lockup.
-
-## Where things live
-
-| File | Purpose |
-| --- | --- |
-| `src/brand.ts` / `src/motion.ts` | Brand tokens; easing, durations and keyframe helpers. **Change a timing token here to update every scene that uses it.** |
-| `src/coachAssets.ts` / `src/components/PhotoCoach.tsx` | Pose asset table with anchors; the whole-cut-out coach with pose dips |
-| `src/intro/*` | The 75 s intro: script, formats, scenes, coaches, shared parts |
-| `src/timeline.ts`, `src/CareerCoachingPractice.tsx` | The 12 s practice |
-| `src/examples/MotionRecipes.tsx` | The pack's five motion studies, registered under the "MotionStudies" folder. CLAUDE.md refers to this as `examples/MotionRecipes.tsx`. |
-| `public/coaches/`, `public/fonts/` | Interim coach cut-outs plus manifest; Quicksand (OFL) |
-| `brand/` | Brief, character documents, the realistic reference (PNG and SVG), and the superseded illustrated sheet (`coach-character-sheet-reference.png`) |
-| `scripts/` | `boxes.py` crop boxes and `matte.py` background removal |
+The rig is the pack's simplified vector redraw with some added detail. It is **not** an exact vectorisation of `brand/Coach_Coachee_Model_Sheet.png`. Matching the model sheet's semi-realistic finish needs that illustration split into the layers listed in `CHARACTER_APPEARANCE.md`: torso, head, hair, eyes, upper arms, forearms, hands and so on. Swapping those in would mean replacing the paths in `Character.tsx`, keeping the same pivots.
 
 ## What was checked
 
-- All eight MP4s were verified with `ffprobe` (dimensions, 30 fps, frame count, duration). None has an audio stream.
-- Each cut-out was checked on ivory at normal contrast and at 4× boosted contrast. A visible light floor box around the feet, and later holes in the cards and Nour's blouse, were found and fixed in `matte.py`.
-- Pose changes were checked at frames 1163 / 1165 / 1167 in LinkedIn. There is no double face, only a faint overlap mid-dip.
-- Frames from every intro scene were checked in both formats. Text stays inside the margins, and the coaches don't collide with the cards.
-- **Not checked:** full-speed playback by a person.
+- `ffprobe` on all outputs: dimensions, 30 fps, frame counts, durations. No audio streams.
+- `npm run check`: 4,500 pose-determinism and joint-limit checks, plus pen contact on every writing frame.
+- Pose sheet and close-ups at full resolution: joints connected, hands clear of the body, the clasp and chin poses read clearly, and the pen sits on the page.
+- Frames from every scene in both formats. Fixed during review:
+  - Omar's hand touching the third option card in LinkedIn: moved the cast outward
+  - Layla's hand touching the first package card in LinkedIn: moved and narrowed the cards
+  - name tags inside the Reels bottom UI zone: moved above the heads
+  - a backdrop ring reading as a hoop around Layla: removed
+- **Not checked:** full-speed playback by a person, and audio (there is none).
 
-## Production dependencies (missing)
+## Remaining production inputs
 
-1. **Approved high-resolution transparent pose PNGs** for each coach, per `CHARACTER_APPEARANCE.md`: neutral standing, seated listening, open-hand invitation, reviewing insights, presenting a plan, and portraits. No image-generation tool is connected in this environment, so they could not be created here. To swap them in, drop them into `public/coaches/` and update `src/coachAssets.ts`.
-2. **Approved ASSESS logo.** The lockup is typed text.
-3. **Voiceover and licensed music, then captions.** Then re-time `src/intro/script.ts`.
-4. **Live registration URL.** Set it as `END_CARD.url`.
-5. **Supporting typeface.** Aptos is not bundled, so Quicksand 500 is the fallback.
-6. **Reference footage** of UpSend (frames or a rights-cleared clip). It could not be played here, so all motion values are proposals.
-7. **Arabic version.** Needs Noto Sans Arabic and an RTL layout pass.
-
-## Decisions for review
-
-1. **Pose-change style.** A 10-frame dip (current), or a hard cut hidden behind a card transition?
-2. **Coach size.** About 545 px body height in Reels and 520 px in LinkedIn. Larger would look softer until high-resolution poses arrive.
-3. **The blank cards held in the exploring pose.** Keep them (they echo the option cards), or request a pose with empty open hands?
-4. **Motion studies.** Watch `out/studies/` and pick the easing (exercise 1) and stagger (exercise 2) to adopt. The intro currently uses cubic ease-out with a 4-frame stagger.
-
-Give corrections as *time range + element + change + reason*. Accepted rules then go into the correction log in `MOTION_PLAYBOOK.md`.
+1. **Narration.** Generate it from `voiceover/` (see `voiceover/ElevenLabs_Voiceover_Guide.md`), then re-time to it, add captions and mix. Add music only if it's licensed.
+2. **Live registration URL.** Set `END_CARD.url` in `src/intro/script.ts`.
+3. **Approved ASSESS logo** for the lockup, and Aptos or another licensed body font (Quicksand is the fallback).
+4. **Final detailed character layers** (see "Character art"), plus seated rigs if you want the seated acting poses.
+5. **Arabic version**, with RTL layout and Noto Sans Arabic.

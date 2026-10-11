@@ -20,15 +20,17 @@ Production targets:
 - Use readable captions, no more than two lines, tied to narration. Create timed SRT or VTT files from verified narration timing when narration is available. Before then, mark timing as provisional.
 - Use local font files and assets for reproducible export. Fall back transparently when licensed fonts are absent.
 - Keep key content within the proposed composition margins, then validate with the intended platform interface.
-- Use slow, subtle movement and a restrained music bed only if licensed audio is supplied.
+- Use purposeful character gestures, restrained supporting graphic movement and a music bed only if licensed audio is supplied.
 
 Character implementation:
-- Use the combined Samir and Nour character reference and the consistency locks below. Samir is the male coach and Nour is the female coach. Give them equal professional status and prominence.
-- A model sheet is a reference, not a ready-to-animate transparent asset. Obtain or prepare separate approved artwork for the required poses. Preserve identity during preparation.
-- If final artwork is missing, build the preview with clearly identified placeholders. Do not silently replace either coach with a new character or call a placeholder production-ready.
-- Use the updated natural photographic character reference. Animate restrained cutouts or pose swaps without bending photographic limbs. Avoid simulated lip sync unless appropriate mouth shapes and reviewed timing are available.
-- Follow CHARACTER_ROLES.md and the scene responsibilities below. Nour leads career questions and option exploration; Samir leads insight and planning; both present the service and CTA. These are presentation assignments, not credential claims.
-- Both coaches listen and help compare options. Career decision ownership remains with the client. Nour must not be depicted as the client.
+- Layla is the female coach and Omar is the male coachee. Use the new model and acting sheets; they replace the previous cast.
+- Preserve mature proportions, face, hair, complexion and wardrobe. Keep decision ownership with Omar.
+- Read CHARACTER_MOTION_BIBLE.md, RIG_ASSET_MAP.json and CHARACTER_ROLES.md before animation.
+- Inspect the working SVG rig study and CharacterMotion.mjs. It is a simpler vector redraw, not the finished detailed character design.
+- Animate connected upper-arm, forearm and hand segments from joint pivots. Use eye direction, head turns and subtle blinks. Do not substitute whole-image sliding for a gesture.
+- Prepare matching final layers for the detailed illustration. The PNG sheets are visual references, not rigs. Clearly identify any prototype artwork.
+- One external narrator; no simulated lip sync. Writing and prop handling require checked hand-to-prop contact and their own reviewed poses.
+- Build the eight-second conversation study first, inspect every important pose, then build the provisional full introduction.
 
 Content controls:
 - Maintain the exact package names and facts below. Personality is included only in Career Direction and Career Transformation, with different assessment products.
@@ -122,7 +124,7 @@ Use the approved ASSESS corporate logo. Place “SHIFT” and “Career Coaching
 
 ## Composition and visual language
 
-- Use generous ivory space, realistic photographic coaches and clean 2D explanatory graphics. Keep one main idea per frame.
+- Use generous ivory space, mature illustrated characters and clean 2D explanatory graphics. Keep one main idea per frame.
 
 - Show options as equally sized cards. Bring them into a comparison before highlighting a preferred direction.
 
@@ -142,57 +144,77 @@ Use large captions, up to two lines, with one thought at a time. Plan gentle 8�
 ---
 
 
-# Male and Female Coach Character Sheet
+# Coach and Coachee Character Sheet
 
-Samir and Nour are fictional career coaches with equal prominence. Each can lead a campaign video, or they can appear across different scenes. Both support the viewer’s career exploration through attentive listening and clear questions. The client retains ownership of career decisions.
+Layla is the coach and Omar is the coachee. These original fictional characters show a coaching conversation, with the client actively reflecting, comparing options and choosing next steps. Use the detailed illustrated sheet as the visual target and the separate vector rigs to study articulated movement.
 
-| Attribute | Samir the male coach | Nour the female coach |
+| Attribute | Layla the coach | Omar the coachee |
 
 | --- | --- | --- |
 
-| Age and presence | Approximately 42–48. Mature, warm and approachable. | Approximately 38–42. Mature, warm and approachable. |
+| Age and presence | About 44. Calm, curious and attentive. | About 37. An experienced professional considering a career change. |
 
-| Face and eyes | Warm medium olive-brown skin, natural brown eyes, neatly trimmed short beard and moustache. | Medium warm olive skin, oval face, natural brown almond-shaped eyes. |
+| Identity | Warm medium olive complexion; shoulder-length dark wavy hair with a side part; natural brown eyes. | Warm olive complexion; short dark hair with a textured side part; short neatly trimmed beard; brown eyes. |
 
-| Hair | Short dark brown hair, neatly groomed, with subtle grey at the temples. | Dark brown shoulder-length wavy hair with a side part. |
+| Wardrobe | Burgundy blazer, ivory blouse, charcoal trousers, flat dark loafers and small understated earrings. | Slate teal shirt with rolled sleeves, warm taupe chinos and dark leather shoes. |
 
-| Clothing | Burgundy open blazer, ivory open-collar shirt, charcoal tailored trousers and charcoal leather shoes. No tie. | Burgundy open blazer, ivory softly open-neck blouse, charcoal tailored trousers and flat charcoal loafers. |
+| Performance | Open questions, attentive pauses, restrained open-palm gestures and quiet encouragement. | Thoughtful pauses, eye contact, explanatory gestures, option comparison and writing next steps. |
 
-| Appearance | Natural photographic realism: adult anatomy, subtle skin texture, individual hair strands and believable fabric folds. | The same photographic realism, soft studio light and professional presence as Samir. |
+| Decision ownership | Helps examine evidence and priorities. | Owns the career decision and the next-step plan. |
 
-| Props | Ivory notebook, burgundy pen, neutral option cards and a simple light chair. | The same props, scale and visual treatment as Samir. |
+| Visual style | Mature semi-realistic 2D illustration, natural anatomy, expressive faces and subtle cel shading. | The same illustration style and light, with a clearly different wardrobe and role. |
 
-| Role | Listens, asks questions and helps the client compare options. | Listens, asks questions and helps the client compare options. |
+## Identity and expression locks
 
-## Matching views and expressions
+Keep facial proportions, complexion, hair, wardrobe and relative scale consistent. Use front, three-quarter and profile views for design reference. Expressions stay subtle: thoughtful, curious, listening and quietly encouraged. These fictional characters do not represent actual facilitators or an actual client case.
 
-Each coach has front, three-quarter and profile views, plus listening, curious and encouraging expressions. Keep emotions subtle. Give both characters the same range of actions and equal visual prominence.
+## Who moves and why
 
-## Shared coaching poses
+Layla invites reflection; Omar responds. Move the eyes toward the person or prop first, then the head and hand. Give the listener time to react. Avoid simultaneous large gestures, exaggerated smiles and repeated generic waving. One external narrator carries the introduction; neither character needs lip sync.
 
-Active Listening: seated with an open posture and notebook on the lap, attending to the speaker. Exploring Options: standing with two equally sized option cards, inviting reflection. Additional production poses can include reviewing a profile, asking an open question and recording agreed next steps.
+## Character colours
 
-## Character continuity
-
-Lock each coach’s facial structure, complexion, hair, outfit, shoes, adult proportions and lighting. Keep expressions and gestures consistent with the updated realistic sheet on the next page. Neither fictional character carries an accreditation claim or represents an actual facilitator.
+Keep burgundy #91212E as the brand colour. Slate teal #385A61 is a supporting wardrobe colour for Omar, with taupe #BDAE97 for his trousers. It distinguishes the coachee without replacing the ASSESS SHIFT palette.
 
 
 ---
 
 
-# Combined Coach Visual Reference
+# Character Visual Reference
 
-Use this sheet as the shared visual reference for Samir and Nour throughout the ASSESS SHIFT campaign.
+The detailed model sheet defines Layla and Omar through matching views, expressions and seated coaching poses.
 
-## Use in animation
+## Use the artwork correctly
 
-Use the updated realistic appearance in every scene. Prepare separate transparent pose assets. Animate the whole cutout with restrained translation, camera depth and pose changes. The board is a static reference, not a rig. Full body gestures and lip sync require suitable animation assets.
+The PNG is a visual reference, not a layered rig. The supplied editable SVGs are simpler vector redraws for the motion study. They demonstrate working joints and stable anatomy, but do not reproduce every detail of this sheet. Match the detailed illustration when preparing final production layers.
 
-## Prompt for further character assets
+## Production artwork
 
-Use the supplied realistic coach reference. Render the specified coach and pose with natural photographic skin, hair and fabric detail, soft warm studio light and believable anatomy. Preserve face, hair, wardrobe and adult proportions. Use calm expressions and open gestures. Keep the full body visible. Avoid text, credentials, extra fingers and plastic skin.
+Separate the torso, head, eyes, hair, upper arms, forearms and hands. Provide overlap at shoulder and elbow seams. Put pivots at the anatomical joints and parent each hand to its forearm, each forearm to its upper arm and each upper arm to the torso. Keep left and right defined from the character’s perspective in final asset naming.
 
-Visual reference: use the combined Samir and Nour coach sheet supplied with this brief. Both characters are coaches. Preserve each identity in further assets.
+## Character reference prompt
+
+Preserve the supplied character identity, mature proportions, complexion, hairstyle and wardrobe. Use clean semi-realistic 2D illustration with subtle cel shading. Render the required conversational action with convincing hands, clear eye direction and restrained expression. Keep the full body visible and use a transparent background for individual pose assets.
+
+
+---
+
+
+# Conversation Acting Reference
+
+Use these six key poses to plan the coaching interaction. In-between motion must preserve anatomy and contact; switching between still images alone does not create a complete articulated performance.
+
+## Acting sequence
+
+Reflect: Omar considers his question while Layla listens. Ask: Layla offers an open question. Respond: Omar explains his priorities. Compare: both attend to possible directions. Plan: Omar records a manageable next step. Next step: the conversation closes with modest confidence, without suggesting a guaranteed outcome.
+
+## Working movement example
+
+The eight-second silent vector study demonstrates planted feet, independently rotating arm segments, small head turns, gaze shifts and blinks. It covers listening, an open question and a response. It does not implement the seated poses, writing, walking, prop contact or lip sync. Build and review those actions separately before the full video.
+
+## Review the performance
+
+Check the anticipation, main gesture, hold and settle in each action. Watch for joint gaps, sliding feet, changing proportions and hands that miss a prop. Keep gestures purposeful and text still while it is being read.
 
 
 ---
@@ -200,39 +222,39 @@ Visual reference: use the combined Samir and Nour coach sheet supplied with this
 
 # Introduction Video Storyboard
 
-Concept: an experienced professional moves from an unresolved career question to a clearer way of making the decision. Target duration is 75 seconds; final scene lengths follow the recorded voiceover.
+Concept: Omar moves from a career question to a clearer decision process, supported by Layla. Target duration is 75 seconds; final scene lengths follow the recorded voiceover.
 
-| Time | Scene and motion | On screen copy |
+| Time | Character action | On screen copy |
 
 | --- | --- | --- |
 
-| 00–07 | Nour appears as a coach beside the viewer’s career question, with an attentive expression. | What comes next? |
+| 00–07 | Omar reflects on his next career move. He looks from his notebook toward three possible directions. | What comes next? |
 
-| 07–16 | Three neutral option cards appear: a new role, a new field, an independent path. | A new role? A new direction? |
+| 07–16 | Omar compares the options. His gaze moves before his head; the cards enter with a controlled stagger. | A new role? A new direction? |
 
-| 16–25 | The path motif introduces the service name. Both coach portraits appear with equal prominence. | ASSESS SHIFT
+| 16–25 | Layla joins Omar and offers an open-palm invitation. Introduce the service. | ASSESS SHIFT
 Career Coaching |
 
-| 25–38 | Samir introduces interests and motivation cards, then adopts an attentive listening pose. | Understand yourself at work |
+| 25–38 | Layla introduces interests and motivation cards. Omar studies them and reacts thoughtfully. | Understand yourself at work |
 
-| 38–51 | Nour invites comparison of options against experience, market and life priorities. | Explore realistic directions |
+| 38–51 | Omar compares directions with experience, market and life priorities. Layla asks and listens. | Explore realistic directions |
 
-| 51–61 | A next-step plan appears beside Samir. The path progresses through modest milestones. | Build a practical transition plan |
+| 51–61 | Omar records a manageable next step in his notebook. Layla supports the reflection. | Build a practical transition plan |
 
-| 61–68 | Both coaches frame three equal package cards without recommending a package for every viewer. | Career Clarity
+| 61–68 | Layla presents three equal package cards. Omar considers the level of support. | Career Clarity
 Career Direction
 Career Transformation |
 
-| 68–75 | Both coaches share the end card with a clear action. Hold the final layout for at least three seconds. | Start with a Chemistry Session
+| 68–75 | Both settle beside the invitation. Hold the final layout for at least three seconds. | Start with a Chemistry Session
 Submit your registration request |
 
-## How SHIFT appears in the story
+## SHIFT in the story
 
-Use the complete phase names in supporting campaign assets: S Situation Mapping; H Holistic Assessment; I Insight Integration; F Future Career Fit; T Transition & Tracking. In the short introduction, show the practical experience of the journey rather than five dense definitions.
+S Situation Mapping; H Holistic Assessment; I Insight Integration; F Future Career Fit; T Transition and Tracking. Show the practical experience of the journey in the short introduction instead of five dense definitions.
 
 ## Story ownership
 
-Nour and Samir are coaches throughout the story. They introduce questions, help interpret evidence and invite the viewer to explore realistic options. The client makes the career decision. The ending offers a Chemistry Session and a structured way to plan next steps.
+Layla supports Omar’s reflection. Omar chooses the direction and next steps. The ending offers a Chemistry Session and a structured way to plan, without promising a job, promotion or salary increase.
 
 
 ---
@@ -314,7 +336,7 @@ The catalogue uses “Career Consultation”; the registration form uses “Chem
 
 ## Claude Code handoff
 
-Give Claude Code this brief, both source files, the approved corporate logo and character reference. Ask it to build an editable video project with a scene timeline, local assets, caption files and an export guide. Let it inspect the available project and tools before selecting or installing a video framework.
+Give Claude Code this brief, both source files, the approved corporate logo and new character references. Ask it to build an editable video project with a scene timeline, local assets, caption files and an export guide. Let it inspect the available project and tools before selecting or installing a video framework.
 
 Start with a storyboard preview. Add a reviewed voice recording and licensed music, then render the final video. Do not replace a character reference sheet with a single animated screenshot: separate character artwork is needed for clean movement.
 
@@ -338,46 +360,34 @@ ASSESS SHIFT Career Coaching Catalogue: slides 4–8, 16–18 and 20–23. Asses
 ---
 
 
-# Character Roles in the Video
+# Character Roles and Movement
 
-These are creative presentation roles for the introduction. Both characters are career coaches with equal professional status. Their topics organize the story; they do not imply different credentials or restrict what either coach can do in a real coaching journey.
+The two characters have distinct responsibilities. Layla facilitates the conversation. Omar represents an experienced professional exploring a decision, with agency throughout the video.
 
-| Character | Primary presentation role | Actions |
-
-| --- | --- | --- |
-
-| Nour | Career questions and option exploration | Introduces the opening question; invites comparison of career directions with experience, market opportunities and life priorities. |
-
-| Samir | Assessment insights and practical planning | Introduces interests and motivation; connects insights to experience; presents manageable transition steps. |
-
-| Both | Service introduction and invitation | Present ASSESS SHIFT, the three packages and the Chemistry Session. Each listens and helps the viewer reflect. |
-
-## Scene responsibilities
-
-| Time | Lead | Responsibility |
+| Character | Role | What the viewer sees |
 
 | --- | --- | --- |
 
-| 00–07 | Nour | Recognize the viewer’s career question. |
+| Layla | Career coach | Listens, asks open questions, introduces assessment insights and supports comparison. |
 
-| 07–16 | Graphics | Show options with no character making a decision. |
+| Omar | Coachee | Reflects, explains priorities, considers evidence, compares options and records his next step. |
 
-| 16–25 | Both | Introduce the service with matched portrait prominence. |
+| Narrator | External voice | Explains the service while both characters support the story visually. |
 
-| 25–38 | Samir | Introduce interests and motivation insight cards. |
+## Movement timing at 30 fps
 
-| 38–51 | Nour | Explore realistic options and life priorities. |
+Use proposed timings as a starting point: gaze leads the head by 3–5 frames; anticipation lasts 6–10 frames; a small conversational gesture takes 16–24 frames; the meaningful hold lasts 24–45 frames; settling takes 10–16 frames. Review against the actual narration instead of forcing every gesture into the same timing.
 
-| 51–61 | Samir | Explain practical next steps and testing an option. |
+## Rig and control hierarchy
 
-| 61–68 | Both | Present package names with neutral equal treatment. |
+Root to torso to upper arm to forearm to hand. Torso to neck and head, with pupils and eyelids inside the head. Keep feet planted for the conversation. The provided SVG study uses screen-left and screen-right suffixes; its asset map states that convention explicitly.
 
-| 68–75 | Both | Invite a Chemistry Session; hold the CTA. |
+## Practice before the full video
 
-## Voice and movement
+First reproduce the eight-second working motion study. Then build the six seated key poses with compatible production layers, clear prop contact and reviewed transitions. Practice listening, an open question, a response, option comparison and writing as separate short shots before combining them.
 
-Use one external narrator for the first version. The coaches support the narration visually; mouths remain still. Optional alternating character voices require separate reviewed recordings and appropriate mouth assets. Use restrained cutout movement and planned pose changes for photographic characters.
+## Evidence and technical sources
 
-## Balance and decision ownership
+New reference: Nijat Ibrahimli, 2D Explainer Animation A to Z, YouTube video jYKPJuKqBwo. The creator’s Fast Food page links to this tutorial. The page and title were inspected; video frames did not play in this environment. Exact motion and timing matches remain unverified. The timing and performance rules here are proposed ASSESS SHIFT directions.
 
-The provisional plan gives Nour 20 seconds of solo scenes, Samir 23 and both 23 seconds together; graphics occupy 9 seconds. Keep visual scale and authority comparable. No extra client character is required. The viewer owns the career decision.
+Adobe Learn, Control animation of multiple layers with parenting: adobe.com/learn/after-effects/web/animating-with-parenting. Use joint anchor points and parented layers for connected rotations. The included vector study implements that hierarchy directly.
