@@ -1,0 +1,7 @@
+Create Reel 01 from docs/campaign-plan.md using the ASSESS SHIFT identity. Read CLAUDE.md and the brand, character and animation production specifications first. Use existing validated articulated assets; if absent, create the asset set and gesture test before building the full film. Do not slide a flattened character sheet around and call it animation.
+
+Build a 1080 x 1920, 30 fps, approximately 30-second English motion graphic with the supplied shot sequence. The coachee makes the choice; the coach supports reflection. Use restrained kinetic typography, real eye focus, articulated hands and a navy line becoming a teal route with one amber decision node. Use the exact CTA, no invented credentials, results, booking address or free-session promise.
+
+Prepare source, storyboard contact sheet, poster and silent MP4. If final voiceover audio is supplied, align shot timing and captions to it and mix a final MP4. Otherwise include the VO script and keep the export labeled silent prototype. Build Arabic as a separate version after shaping and layout verification, not by stacking two languages in one frame.
+
+Use a pure window.seek(t) timeline, await assets/fonts, verify seek-order independence, inspect the final end card and duration, and check real-time movement. Repair the provided renderer if necessary using docs/animation-production.md. Produce a verification report with actual findings. Do not publish.

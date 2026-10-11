@@ -1,0 +1,7 @@
+Create the ASSESS SHIFT whiteboard explainer in docs/campaign-plan.md (Reel 02), around 35 seconds, portrait 1080 x 1920 at 30 fps. Read CLAUDE.md, brand specs, character bible and animation production document. Use the whiteboard reference sheet for appearance and examples/stroke-reveal.html only for the deterministic reveal technique.
+
+Build intentional editable SVG paths for the same coach and coachee, simple conversation furniture, notebook and choice route. Each path needs an ID, start and duration. Reveal contours, face, wardrobe, meaningful gestures and then the chosen route in a purposeful sequence. A wipe over a PNG is unacceptable. Add selective teal/amber fills after corresponding strokes, and use whole shaped lines for Arabic.
+
+The story shows uncertainty, a reflective conversation, choices and one coachee-selected next step. End with Book a Chemistry Session. No instant-success claims. A pen hand is optional and must follow the actual active path endpoint if used.
+
+Deliver SVG source, path timing JSON, contact sheet, poster and silent MP4. Use an actual supplied voiceover to generate final synchronized audio and captions. Test deterministic seeking and review full-speed stroke pacing. Preserve the end card. Record actual QA results. Do not publish.

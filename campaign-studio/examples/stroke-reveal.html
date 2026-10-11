@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ASSESS SHIFT | Path reveal study</title>
+<style>body{margin:0;background:#142C3E;color:#F7F3EA;font:16px system-ui;display:grid;place-items:center;min-height:100vh}main{max-width:900px;width:95%}svg{width:100%;background:#F7F3EA;border-radius:16px}label{display:block;margin:20px 0}input{width:75%;accent-color:#D9A441}small{display:block;margin-top:12px}</style>
+<main><h1>One line. A clearer next step.</h1><svg id="c" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" aria-label="A tangled line reveals into a chosen path">
+<g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="6">
+<path id="explore" stroke="#142C3E" d="M90 285 C210 60 345 90 250 260 C180 390 85 150 300 175 C460 195 300 375 285 245 C280 160 375 200 430 240"/>
+<path id="alternative" stroke="#142C3E" opacity=".3" d="M430 240 C490 240 485 360 590 365 H775"/>
+<path id="choice" stroke="#217A78" d="M430 240 H550 Q570 240 570 220 V160 Q570 140 590 140 H790"/>
+</g><circle id="node" cx="570" cy="220" r="12" fill="#D9A441"/><g fill="#142C3E" font-family="system-ui" font-size="22"><text x="90" y="430">Explore</text><text x="412" y="430">Choose</text><text x="720" y="430">Next step</text></g></svg>
+<label>Seek time <input id="time" type="range" min="0" max="8" step=".01" value="0"> <output id="stamp">0.00 s</output></label>
+<small>Technique study only. This is true SVG stroke reveal, not the finished character film.</small></main>
+<script>
+const tracks=[['explore',0,3],['alternative',3,1],['choice',4,2.3]].map(([id,start,duration])=>{const el=document.getElementById(id);return{el,start,duration,length:el.getTotalLength()}});
+const clamp=v=>Math.max(0,Math.min(1,v));
+window.seek=t=>{for(const x of tracks){const p=clamp((t-x.start)/x.duration);x.el.style.strokeDasharray=String(x.length);x.el.style.strokeDashoffset=String(x.length*(1-p));x.el.style.visibility=p>0?'visible':'hidden'}document.getElementById('node').style.opacity=String(clamp((t-6.1)/.25));document.getElementById('stamp').value=t.toFixed(2)+' s';return true};
+window.ready=Promise.resolve();document.getElementById('time').addEventListener('input',e=>window.seek(Number(e.target.value)));window.seek(0);
+</script></html>

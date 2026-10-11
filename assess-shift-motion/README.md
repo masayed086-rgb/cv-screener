@@ -102,3 +102,7 @@ The rig is the pack's simplified vector redraw with some added detail. It is **n
 3. **Approved ASSESS logo** for the lockup, and Aptos or another licensed body font (Quicksand is the fallback).
 4. **Final detailed character layers** (see "Character art"), plus seated rigs if you want the seated acting poses.
 5. **Arabic version**, with RTL layout and Noto Sans Arabic.
+
+## Related: Campaign Studio kit
+
+`../campaign-studio/` holds a separate proposed direction for ASSESS SHIFT. It uses a navy, teal and amber palette with Manrope, and two new characters, `coach-01` and `coachee-01`. It covers a six-video campaign. Its specs conflict with this project's burgundy palette and Layla/Omar cast. See `../campaign-studio/INTEGRATION.md` before mixing the two.

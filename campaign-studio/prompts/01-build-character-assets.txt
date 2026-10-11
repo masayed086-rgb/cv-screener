@@ -1,0 +1,9 @@
+Read CLAUDE.md, brand/brand-spec.md, brand/tokens.json, characters/character-bible.md and docs/animation-production.md. Open all three reference PNGs in assets/reference-sheets and describe the identity features you will preserve.
+
+Build the coach-01 and coachee-01 as clean articulated SVG character assets. The PNG sheets are visual references, not source rigs. Match silhouettes, proportions, wardrobe and faces as closely as possible; if exact reproduction is not achievable, show the divergence plainly in a side-by-side comparison.
+
+Start with 3/4 standing and seated views, then six expressions and useful hand poses. Separate named groups for anatomy, face, hair and clothing; document local joint pivots in JSON. Create whiteboard variants that preserve landmarks and use editable paths, not a raster filter. Use the asset list and acting rules in the character bible.
+
+Build a deterministic 5-second acting test: coachee looks toward coach, coach listens, then asks with one open-hand gesture; coachee reflects and nods once. Use closed-mouth performance without audio rather than fake lip sync. Deliver source assets, pivot manifest, pose contact sheet and MP4 if dependencies are available. If rendering is blocked, provide the source and precise missing dependency; do not claim a video exists.
+
+Review joint continuity, hand anatomy, likeness, eye focus and actual real-time movement. Save technical decisions in docs/production-decisions.md. No publishing.

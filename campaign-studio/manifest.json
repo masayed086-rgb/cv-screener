@@ -1,0 +1,137 @@
+[
+  {
+    "path": "ASSESS_SHIFT_Visual_Bible.pdf",
+    "bytes": 8007004,
+    "sha256": "9ca5f0d167fd574ab73916623ebf5b5d6606a0af2985f362acb6c33ada329e4a"
+  },
+  {
+    "path": "CLAUDE.md",
+    "bytes": 2986,
+    "sha256": "ea46835edf183de35ea04a10c89cf369e8eb6eca984ef4f600eaa9a5d1f775ff"
+  },
+  {
+    "path": "README.md",
+    "bytes": 3289,
+    "sha256": "89b6b87ccd82054be1f9474a4a243b301292079c6b3293b7c04654ba1f91754d"
+  },
+  {
+    "path": "assets/reference-sheets/brand-direction.png",
+    "bytes": 1964409,
+    "sha256": "690bb25c126280d61c42a98c1f6620698016649ff16c7eb8fe32fe06a0afb0ce"
+  },
+  {
+    "path": "assets/reference-sheets/character-system.png",
+    "bytes": 1932975,
+    "sha256": "71946deda459d50b4e7b6bd620fe96c7c7d9c663e85143bad72dc3fcfcba774b"
+  },
+  {
+    "path": "assets/reference-sheets/whiteboard-system.png",
+    "bytes": 1698298,
+    "sha256": "2d3c513e8f05e824606078004345e5ea55f32bbf5bb761cb0f932c7acfecfae5"
+  },
+  {
+    "path": "brand/brand-spec.md",
+    "bytes": 3770,
+    "sha256": "7ec5741291170d5cea70312ae30a832cfd9133b5889f7302768489155983d452"
+  },
+  {
+    "path": "brand/logo-concept.svg",
+    "bytes": 388,
+    "sha256": "4363069272a815d7faa4d98c09173bbb7dbb93ae92f30f977ae9554fc2bcb119"
+  },
+  {
+    "path": "brand/tokens.json",
+    "bytes": 823,
+    "sha256": "154fa68b4c109f2156c3825daedf66ba7c815448344bfadacddc51e83705d796"
+  },
+  {
+    "path": "characters/character-bible.md",
+    "bytes": 4228,
+    "sha256": "15030242820d0b919093351d1d60ed1659baa31e28943e55a86e6aa06f944826"
+  },
+  {
+    "path": "docs/animation-production.md",
+    "bytes": 3407,
+    "sha256": "c272fa8f2746ecc7dca6cd3fc83727e0caefa1722b61612d3e07e26e7060bdb2"
+  },
+  {
+    "path": "docs/campaign-plan.md",
+    "bytes": 4041,
+    "sha256": "bd7839bc2c4ff39a90a94e92fd1a63860e7411f50d069106dfadf59dee161e45"
+  },
+  {
+    "path": "docs/verification.md",
+    "bytes": 1137,
+    "sha256": "50b89a1174e0c73236d7a1f5c128ebbe6f44222eadbe0fd543ce4f73289e44a1"
+  },
+  {
+    "path": "examples/stroke-reveal.html",
+    "bytes": 2324,
+    "sha256": "dddc9a621430c546b75077e9d11eeeca9dd482dade2358d6dad0f56983171243"
+  },
+  {
+    "path": "original-toolkit/motion-reel/SKILL.md",
+    "bytes": 3441,
+    "sha256": "88a6dc023ef8aedaf6fef695fc0edacfc50329e15f28bd795797adfc15246096"
+  },
+  {
+    "path": "original-toolkit/motion-reel/references/brand-reel.txt",
+    "bytes": 923,
+    "sha256": "bae3506dd91bfaf1a7d56c33bf9e4031e25125a8549ed85b1f0a6657da0cd236"
+  },
+  {
+    "path": "original-toolkit/motion-reel/references/critique-pass.txt",
+    "bytes": 689,
+    "sha256": "020c7283d750f823c3a265a7d50e7b5fea5051d540b1de8eaf785ee642497221"
+  },
+  {
+    "path": "original-toolkit/motion-reel/references/rules.md",
+    "bytes": 1210,
+    "sha256": "55c07c83d9bbdc5ad32055fdf7ade1b2cd9c35c7efd6f0e9419278a2a2f913b1"
+  },
+  {
+    "path": "original-toolkit/motion-reel/scripts/beats.py",
+    "bytes": 809,
+    "sha256": "cd37f56b0e50935b62f505c46c4692bc2208f4a1e16c593447163ab77c11ae03"
+  },
+  {
+    "path": "original-toolkit/motion-reel/scripts/motion.js",
+    "bytes": 1819,
+    "sha256": "268f6dfca69f3a23e09a819661463f72664228089803bafb51ca0dd925bcfa0a"
+  },
+  {
+    "path": "original-toolkit/motion-reel/scripts/render.mjs",
+    "bytes": 1766,
+    "sha256": "2fc30acc0a6ecefc0aee8186a5b37543896e46a306c9a044f6f056432a735204"
+  },
+  {
+    "path": "original-toolkit/motion-reel/scripts/sfx.mjs",
+    "bytes": 1529,
+    "sha256": "23b94334d48821c4a3382d7366695d0995aa70ea4c9f91376d00a58fa94ea624"
+  },
+  {
+    "path": "original-toolkit/motion-reel/templates/cues.json",
+    "bytes": 318,
+    "sha256": "154439e38ca99f553227f338ad9a5afb33e59972f9f8a6540276855ca57806ff"
+  },
+  {
+    "path": "original-toolkit/motion-reel/templates/index.html",
+    "bytes": 2941,
+    "sha256": "baa80ce74cddf801a305adb4a6a8d3e24d3ebabd1b6df6043c4469b409b7f456"
+  },
+  {
+    "path": "prompts/01-build-character-assets.txt",
+    "bytes": 1472,
+    "sha256": "930bdb0431e8758defab95e1ebd2d33f70251de81d1eb6062c6e5a8ec6a780cd"
+  },
+  {
+    "path": "prompts/02-first-motion-reel.txt",
+    "bytes": 1422,
+    "sha256": "20c179ab54f79ed87b9581f159eeba57cf86c4cdc4982123b44fe79d0f842e01"
+  },
+  {
+    "path": "prompts/03-first-whiteboard-reel.txt",
+    "bytes": 1282,
+    "sha256": "29df439ce73152f26fd77a71b3f6f8417d6838f6dfc74a430b16db800f5609df"
+  }
+]
