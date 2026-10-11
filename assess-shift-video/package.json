@@ -1,0 +1,18 @@
+{
+  "name": "assess-shift-intro-video",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "preview": "node tools/serve.mjs",
+    "stills": "node tools/render.mjs --stills --format vertical --lang en",
+    "render:v:en": "node tools/render.mjs --format vertical --lang en",
+    "render:l:en": "node tools/render.mjs --format landscape --lang en",
+    "render:v:ar": "node tools/render.mjs --format vertical --lang ar",
+    "render:l:ar": "node tools/render.mjs --format landscape --lang ar",
+    "captions": "node tools/captions.mjs",
+    "stills:all": "node tools/render.mjs --stills --format vertical --lang en && node tools/render.mjs --stills --format landscape --lang en && node tools/render.mjs --stills --format vertical --lang ar && node tools/render.mjs --stills --format landscape --lang ar && python3 tools/storyboard_frames.py"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}

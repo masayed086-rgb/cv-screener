@@ -1,0 +1,40 @@
+{
+  "_note": "Brand tokens, CTA and audio paths. Edit here; the film reads this file at load time.",
+  "brandName": "ASSESS SHIFT",
+  "descriptor": { "en": "Career Coaching", "ar": "كوتشينج مهني" },
+  "endorsement": { "en": "By ASSESS International", "ar": "من ASSESS International" },
+  "logo": {
+    "onLight": "assets/assess-logo-crimson.png",
+    "onDark": "assets/assess-logo-white.png",
+    "status": "Extracted raster from the catalogue (1438x740 PNG). Replace with the approved vector master before publication."
+  },
+  "colors": {
+    "burgundy": "#91212E",
+    "deepBurgundy": "#3A0A10",
+    "charcoal": "#242427",
+    "ivory": "#FAF7F2",
+    "softRose": "#F5E9E9",
+    "white": "#FFFFFF",
+    "muted": "#5E5E66"
+  },
+  "fonts": {
+    "latin": "Quicksand",
+    "body": "Quicksand",
+    "bodyNote": "Aptos is not bundled (licensed). Quicksand Medium is the transparent fallback for supporting copy.",
+    "arabic": "Noto Sans Arabic"
+  },
+  "cta": {
+    "url": null,
+    "urlNote": "No live registration URL supplied. While null, the end card shows a PREVIEW label instead of a link."
+  },
+  "audio": {
+    "voiceover": { "en": null, "ar": null },
+    "music": null,
+    "note": "Paths relative to the project root. Leave null until a reviewed recording / licensed track exists."
+  },
+  "preview": {
+    "watermark": true,
+    "placeholderArt": true,
+    "provisionalTiming": true
+  }
+}

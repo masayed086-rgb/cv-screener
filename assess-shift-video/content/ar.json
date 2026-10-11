@@ -1,0 +1,63 @@
+{
+  "_note": "Egyptian Arabic on-screen copy and captions. Captions follow the brief's Arabic voiceover. On-screen labels other than the headline are PROPOSED translations and need native review. Package and product names stay in Latin script. Caption times are PROVISIONAL.",
+  "lang": "ar",
+  "dir": "rtl",
+  "preview": "PREVIEW · رسومات مؤقتة من ورقة الشخصيات · توقيت مبدئي",
+  "s1": { "head": "إيه الخطوة *الجاية؟*" },
+  "s2": {
+    "head": "دور جديد؟ *اتجاه جديد؟*",
+    "options": ["دور جديد", "مجال جديد", "طريق مستقل"]
+  },
+  "s3": { "tagline": "تقييمات سيكومترية + كوتشينج مهني" },
+  "s4": {
+    "head": "افهم *نفسك* في الشغل",
+    "cards": [
+      { "title": "الاهتمامات", "sub": "إيه اللي بيشدّك" },
+      { "title": "الدوافع", "sub": "إيه اللي بيحمّسك" }
+    ],
+    "coach": "الكوتش"
+  },
+  "s5": {
+    "head": "استكشف اتجاهات *واقعية*",
+    "criteria": ["الخبرة", "السوق", "أولويات حياتك"],
+    "chosen": "اختيارك"
+  },
+  "s6": {
+    "head": "ابني *خطة انتقال* عملية",
+    "steps": ["جرّب", "اتعلّم", "اتواصل", "قرّر"]
+  },
+  "s7": {
+    "eyebrow": "ثلاث رحلات، منهج واحد",
+    "packages": [
+      { "label": "Package A", "name": "Career Clarity", "sessions": "جلستين كوتشينج" },
+      { "label": "Package B", "name": "Career Direction", "sessions": "٤ جلسات كوتشينج" },
+      { "label": "Package C", "name": "Career Transformation", "sessions": "٦ جلسات كوتشينج" }
+    ]
+  },
+  "s8": {
+    "tagline": "خطوتك المهنية الجاية تستحق *وضوح.*",
+    "cta": "ابدأ بجلسة تعارف\nChemistry Session",
+    "button": "قدّم طلب التسجيل",
+    "noUrl": "PREVIEW · رابط التسجيل لسه هيتأكد"
+  },
+  "captions": [
+    { "start": 0.5, "end": 3.6, "text": "عندك خبرة وسنين شغل،" },
+    { "start": 3.7, "end": 6.8, "text": "بس لسه بتسأل نفسك: إيه خطوتي المهنية الجاية؟" },
+    { "start": 7.2, "end": 10.4, "text": "دور جديد؟ مجال مختلف؟ ولا طريقة تانية للشغل؟" },
+    { "start": 10.5, "end": 15.9, "text": "لما يكون في دخل ومسؤوليات وخبرة بنيتها، القرار محتاج تفكير." },
+    { "start": 16.3, "end": 20.6, "text": "ASSESS SHIFT بيجمع بين نتائج تقييمات سيكومترية وكوتشينج مهني،" },
+    { "start": 20.7, "end": 24.8, "text": "عشان تفهم إيه المهم بالنسبة لك في الشغل." },
+    { "start": 25.4, "end": 30.6, "text": "مع الكوتش، بتستكشف اهتماماتك ودوافعك،" },
+    { "start": 30.7, "end": 37.6, "text": "وتربطها بخبرتك." },
+    { "start": 38.4, "end": 44.0, "text": "وبتقارن الاختيارات بمهاراتك، وفرص السوق، وأولويات حياتك." },
+    { "start": 44.2, "end": 50.6, "text": "وبعض الباقات بتضيف فهم أعمق لشخصيتك وطريقة شغلك." },
+    { "start": 51.4, "end": 56.0, "text": "وبعدين بتحط خطوات عملية،" },
+    { "start": 56.1, "end": 60.8, "text": "وتستكشف إزاي تختبر الاختيار قبل تغيير كبير." },
+    { "start": 61.2, "end": 64.0, "text": "Career Clarity وCareer Direction وCareer Transformation" },
+    { "start": 64.1, "end": 66.0, "text": "بيقدّموا مستويات مختلفة من الدعم." },
+    { "start": 66.2, "end": 68.6, "text": "ابدأ بطلب جلسة تعارف، Chemistry Session." },
+    { "start": 68.7, "end": 71.0, "text": "شارك وضعك الحالي، واتكلم عن احتياجك،" },
+    { "start": 71.1, "end": 73.0, "text": "واستكشف الرحلة المناسبة ليك." },
+    { "start": 73.1, "end": 75.0, "text": "ASSESS SHIFT. خطوتك المهنية الجاية تستحق وضوح." }
+  ]
+}

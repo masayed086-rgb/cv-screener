@@ -1,0 +1,16 @@
+{
+  "_note": "PROVISIONAL storyboard timings (seconds) from the brief. Re-time every scene and caption to the reviewed voiceover before the final render.",
+  "provisional": true,
+  "fps": 30,
+  "duration": 75,
+  "scenes": [
+    { "id": "s1", "name": "The question", "start": 0, "end": 7 },
+    { "id": "s2", "name": "The options", "start": 7, "end": 16 },
+    { "id": "s3", "name": "Service name", "start": 16, "end": 25 },
+    { "id": "s4", "name": "Understand yourself", "start": 25, "end": 38 },
+    { "id": "s5", "name": "Compare directions", "start": 38, "end": 51 },
+    { "id": "s6", "name": "Transition plan", "start": 51, "end": 61 },
+    { "id": "s7", "name": "Three journeys", "start": 61, "end": 68 },
+    { "id": "s8", "name": "Call to action", "start": 68, "end": 75 }
+  ]
+}

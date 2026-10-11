@@ -1,0 +1,65 @@
+{
+  "_note": "English on-screen copy and captions. *word* marks burgundy emphasis. Caption times are PROVISIONAL.",
+  "lang": "en",
+  "dir": "ltr",
+  "preview": "PREVIEW · placeholder art cut from the character sheet · provisional timing",
+  "s1": { "head": "What comes *next?*" },
+  "s2": {
+    "head": "A new role? *A new direction?*",
+    "options": ["A new role", "A new field", "An independent path"]
+  },
+  "s3": { "tagline": "Psychometric insight + professional coaching" },
+  "s4": {
+    "head": "Understand *yourself* at work",
+    "cards": [
+      { "title": "Interests", "sub": "What attracts you" },
+      { "title": "Motivation", "sub": "What energizes you" }
+    ],
+    "coach": "Your coach"
+  },
+  "s5": {
+    "head": "Explore *realistic* directions",
+    "criteria": ["Experience", "Market", "Life priorities"],
+    "chosen": "Your choice"
+  },
+  "s6": {
+    "head": "Build a practical *transition plan*",
+    "steps": ["Test", "Learn", "Connect", "Decide"]
+  },
+  "s7": {
+    "eyebrow": "Three journeys, one method",
+    "packages": [
+      { "label": "Package A", "name": "Career Clarity", "sessions": "2 coaching sessions" },
+      { "label": "Package B", "name": "Career Direction", "sessions": "4 coaching sessions" },
+      { "label": "Package C", "name": "Career Transformation", "sessions": "6 coaching sessions" }
+    ]
+  },
+  "s8": {
+    "tagline": "Your next career move deserves *clarity.*",
+    "cta": "Start with a Chemistry Session",
+    "button": "Submit your registration request",
+    "noUrl": "PREVIEW · registration link to be confirmed"
+  },
+  "captions": [
+    { "start": 0.5, "end": 3.2, "text": "You’ve built experience." },
+    { "start": 3.3, "end": 6.8, "text": "But what should your next career move be?" },
+    { "start": 7.2, "end": 10.4, "text": "A new role? A different field? Or a new way of working?" },
+    { "start": 10.5, "end": 13.4, "text": "When income, family and years of experience matter," },
+    { "start": 13.5, "end": 15.9, "text": "the decision needs careful thought." },
+    { "start": 16.3, "end": 20.6, "text": "ASSESS SHIFT combines psychometric insight with professional career coaching" },
+    { "start": 20.7, "end": 24.8, "text": "to help you understand what matters to you at work." },
+    { "start": 25.4, "end": 30.6, "text": "Together with your coach, you explore your interests and motivation," },
+    { "start": 30.7, "end": 37.6, "text": "and connect them with your experience." },
+    { "start": 38.4, "end": 42.4, "text": "You compare possible directions against your skills," },
+    { "start": 42.5, "end": 46.2, "text": "market opportunities and life priorities." },
+    { "start": 46.4, "end": 50.6, "text": "Personality insight is included in selected journeys." },
+    { "start": 51.4, "end": 56.0, "text": "Then you build practical next steps," },
+    { "start": 56.1, "end": 60.8, "text": "with room to test an option before making a major move." },
+    { "start": 61.2, "end": 64.0, "text": "Career Clarity, Career Direction and Career Transformation" },
+    { "start": 64.1, "end": 66.0, "text": "offer different levels of support." },
+    { "start": 66.2, "end": 68.6, "text": "Start by requesting a Chemistry Session." },
+    { "start": 68.7, "end": 71.0, "text": "Share your situation, discuss what you need" },
+    { "start": 71.1, "end": 73.0, "text": "and explore the journey that may suit you." },
+    { "start": 73.1, "end": 75.0, "text": "ASSESS SHIFT. Your next career move deserves clarity." }
+  ]
+}

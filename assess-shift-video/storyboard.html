@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASSESS SHIFT — Storyboard</title>
+<style>
+@font-face { font-family: 'Quicksand'; font-weight: 600; src: url('fonts/quicksand-latin-600-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Quicksand'; font-weight: 700; src: url('fonts/quicksand-latin-700-normal.woff2') format('woff2'); }
+@font-face { font-family: 'Noto Sans Arabic'; font-weight: 600; src: url('fonts/noto-sans-arabic-arabic-600-normal.woff2') format('woff2'); }
+:root { --b: #91212E; --d: #3A0A10; --c: #242427; --i: #FAF7F2; --r: #F5E9E9; --m: #5E5E66; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--i); color: var(--c); font: 600 15px/1.5 'Quicksand', 'Noto Sans Arabic', sans-serif; }
+header { padding: 28px 24px 8px; max-width: 1400px; margin: 0 auto; }
+h1 { margin: 0; font-size: 30px; } h1 span { color: var(--b); }
+.note { color: var(--m); margin: 6px 0 14px; max-width: 900px; }
+.bar { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.bar button { font: inherit; padding: 8px 16px; border-radius: 999px; border: 2px solid var(--b); background: #fff; color: var(--b); cursor: pointer; min-height: 44px; }
+.bar button[aria-pressed="true"] { background: var(--b); color: #fff; }
+.bar a { color: var(--b); }
+main { max-width: 1400px; margin: 0 auto; padding: 12px 24px 48px; display: grid; gap: 18px; }
+.scene { background: #fff; border: 1px solid #E6E1DA; border-radius: 18px; padding: 18px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 18px; }
+.frames { display: flex; gap: 10px; }
+.frames img { width: calc(50% - 5px); height: auto; border-radius: 10px; border: 1px solid #eee; background: var(--i); }
+.landscape .frames { flex-direction: column; } .landscape .frames img { width: 100%; }
+.meta h2 { margin: 0 0 4px; font-size: 22px; } .time { color: var(--b); }
+.meta .cap { background: var(--i); border-radius: 10px; padding: 8px 12px; margin-top: 6px; }
+.meta .cap small { color: var(--m); display: block; }
+[dir=rtl] { font-family: 'Noto Sans Arabic', sans-serif; }
+@media (max-width: 760px) { .scene { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>ASSESS SHIFT · <span>Introduction film storyboard</span></h1>
+  <p class="note">Frames are exported from the live film (<code>npm run stills:all</code>). Timings and captions are PROVISIONAL until the reviewed voiceover is recorded. Character art is cut from the reference sheet as a placeholder.</p>
+  <div class="bar" role="group" aria-label="Version">
+    <button data-f="vertical" data-l="en" aria-pressed="true">Vertical · EN</button>
+    <button data-f="landscape" data-l="en">Landscape · EN</button>
+    <button data-f="vertical" data-l="ar">Vertical · AR</button>
+    <button data-f="landscape" data-l="ar">Landscape · AR</button>
+    <a id="open" href="src/index.html">Open the playable preview →</a>
+  </div>
+</header>
+<main id="list"></main>
+<script type="module">
+const timing = await fetch('timing/scenes.json').then((r) => r.json());
+const content = { en: await fetch('content/en.json').then((r) => r.json()), ar: await fetch('content/ar.json').then((r) => r.json()) };
+const list = document.getElementById('list');
+const esc = (s) => s.replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c])).replace(/\*/g, '');
+function render(f, l) {
+  const c = content[l];
+  list.className = f;
+  list.innerHTML = timing.scenes.map((s) => {
+    const caps = c.captions.filter((k) => k.start < s.end && k.end > s.start);
+    return `<section class="scene"><div class="frames">
+      <img src="docs/storyboard/${f}-${l}-${s.id}a.jpg" alt="${s.name}, early frame" loading="lazy">
+      <img src="docs/storyboard/${f}-${l}-${s.id}b.jpg" alt="${s.name}, late frame" loading="lazy"></div>
+      <div class="meta"><h2>${s.id.toUpperCase()} · ${s.name} <span class="time">${s.start}–${s.end}s</span></h2>
+      ${caps.map((k) => `<div class="cap" dir="${c.dir}"><small dir="ltr">${k.start.toFixed(1)}–${k.end.toFixed(1)}s · caption / VO</small>${esc(k.text)}</div>`).join('')}
+      </div></section>`;
+  }).join('');
+  document.getElementById('open').href = `src/index.html?format=${f}&lang=${l}`;
+}
+document.querySelectorAll('.bar button').forEach((b) => b.onclick = () => {
+  document.querySelectorAll('.bar button').forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+  render(b.dataset.f, b.dataset.l);
+});
+render('vertical', 'en');
+</script>
+</body>
+</html>
