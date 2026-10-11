@@ -1,0 +1,20 @@
+{
+  "name": "assess-shift-motion",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "typecheck": "tsc -p .",
+    "still": "remotion still src/index.ts CareerCoachingPractice --browser-executable=${BROWSER_EXECUTABLE:-/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell}",
+    "render": "remotion render src/index.ts CareerCoachingPractice out/career-coaching-practice-silent.mp4 --browser-executable=${BROWSER_EXECUTABLE:-/opt/pw-browsers/chromium_headless_shell-1194/chrome-linux/headless_shell}"
+  },
+  "dependencies": {
+    "@fontsource/quicksand": "^5.3.0",
+    "@remotion/cli": "^4.0.534",
+    "@types/react": "^19.3.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "remotion": "^4.0.534",
+    "typescript": "^7.0.2"
+  }
+}
