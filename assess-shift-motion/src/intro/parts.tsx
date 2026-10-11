@@ -14,7 +14,6 @@ type Seg = {text: string; em?: boolean};
 
 export const Headline: React.FC<{L: Layout; f: number; dur: number; segs?: readonly Seg[]; at?: number}> = ({L, f, dur, segs, at = 6}) => {
   if (!segs) return null;
-  const e = enter(f, at, DUR.heading + 2, OFFSET.heading);
   const out = exitOf(f, dur);
   return (
     <div
@@ -28,18 +27,31 @@ export const Headline: React.FC<{L: Layout; f: number; dur: number; segs?: reado
         fontWeight: 700,
         fontSize: L.headline.size,
         lineHeight: 1.12,
-        whiteSpace: 'pre-line',
         color: COLORS.charcoal,
-        opacity: e.opacity * (1 - out),
-        transform: `translateY(${e.offset - out * 10}px)`,
+        opacity: 1 - out,
+        transform: `translateY(${-out * 10}px)`,
       }}
     >
-      {segs.map((s, i) => (
-        <span key={i} style={{color: s.em ? COLORS.burgundy : undefined}}>
-          {/* Line breaks in copy are for the narrow vertical format only. */}
-          {L.vertical ? s.text : s.text.replace('\n', ' ')}
-        </span>
-      ))}
+      {/* Word-by-word reveal: each word rises in 3 frames after the previous one. */}
+      {(() => {
+        let w = 0;
+        return segs.map((sg, i) => {
+          const text = L.vertical ? sg.text : sg.text.replace('\n', ' ');
+          return (
+            <span key={i} style={{color: sg.em ? COLORS.burgundy : undefined}}>
+              {text.split(/(\s+)/).map((tok, j) => {
+                if (/^\s+$/.test(tok)) return tok.includes('\n') ? <br key={j} /> : ' ';
+                const we = enter(f, at + 3 * w++, DUR.heading, OFFSET.heading);
+                return (
+                  <span key={j} style={{display: 'inline-block', opacity: we.opacity, transform: `translateY(${we.offset}px)`}}>
+                    {tok}
+                  </span>
+                );
+              })}
+            </span>
+          );
+        });
+      })()}
     </div>
   );
 };

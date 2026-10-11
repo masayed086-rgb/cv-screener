@@ -3,7 +3,7 @@ import {IntroVideo} from './intro/IntroVideo';
 import {LAYOUTS} from './intro/formats';
 import {INTRO_DURATION, INTRO_FPS} from './intro/script';
 import {MotionRecipeCompositions} from './examples/MotionRecipes';
-import {PoseSheet, WritingCloseUp} from './rig/PoseSheet';
+import {ArtCloseUp, PoseSheet, WritingCloseUp} from './rig/PoseSheet';
 import {ConversationStudy} from './rig/ConversationStudy';
 
 export const RemotionRoot: React.FC = () => (
@@ -33,6 +33,7 @@ export const RemotionRoot: React.FC = () => (
     </Folder>
     <Folder name="Rig">
       <Composition id="PoseSheet" component={PoseSheet} width={1920} height={1080} fps={30} durationInFrames={1} />
+ <Composition id="ArtCloseUp" component={ArtCloseUp} width={1920} height={1080} fps={30} durationInFrames={1} />
       <Composition id="WritingCloseUp" component={WritingCloseUp} width={1080} height={1080} fps={30} durationInFrames={1} />
     </Folder>
     <Folder name="MotionStudies">

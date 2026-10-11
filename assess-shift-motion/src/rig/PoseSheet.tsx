@@ -57,3 +57,17 @@ export const WritingCloseUp: React.FC = () => (
     </svg>
   </AbsoluteFill>
 );
+
+// Close-up of both characters for art review.
+export const ArtCloseUp: React.FC = () => (
+  <AbsoluteFill style={{background: COLORS.ivory}}>
+    <svg width={1920} height={1080}>
+      <g transform="translate(560 40) scale(2.9)">
+        <Character who="Layla" pose={pose('clasp', 'clasp', {head: 2, eyeX: 1.4})} />
+      </g>
+      <g transform="translate(1360 40) scale(2.9)">
+        <Character who="Omar" pose={pose('rest', 'rest', {head: -2, eyeX: -1.4})} />
+      </g>
+    </svg>
+  </AbsoluteFill>
+);

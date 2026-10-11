@@ -48,6 +48,8 @@ export type ActingTrack = {
   // Small writing strokes: [start, end) ranges where the wrist works.
   writing?: [number, number][];
   defaultLayer: {L: ArmLayer; R: ArmLayer};
+  // Phase for the subtle idle head sway (so two characters never sway in sync).
+  idlePhase?: number;
 };
 
 const spec = (a: ArmName | ArmSpec): ArmSpec => (typeof a === 'string' ? ARM[a] : a);
@@ -123,7 +125,8 @@ export const poseAt = (tr: ActingTrack, t: number): Pose => {
   return {
     L: armAt(tr.L, t, tr.defaultLayer.L),
     R,
-    head: head + n * 1.5,
+    // Idle life: <1° head sway on a slow sine, never a bob of the whole body.
+    head: head + n * 1.5 + (tr.idlePhase === undefined ? 0 : 0.7 * Math.sin(t / 41 + tr.idlePhase)),
     nod: n * 3,
     eyeX: channel(tr.look, t, (k) => k.look.eyeX, 0),
     eyeY: channel(tr.look, t, (k) => k.look.eyeY, 0) + n * 0.6,

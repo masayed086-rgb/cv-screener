@@ -17,6 +17,7 @@ const lk = (at: number, look: Look, dur = 8) => ({at, dur, look});
 
 export const LAYLA: ActingTrack = {
   defaultLayer: {L: 'back', R: 'front'},
+  idlePhase: 0,
   L: [
     {at: 0, dur: 1, arm: 'clasp'},
     {at: 2056, dur: 22, arm: 'welcome'},
@@ -75,6 +76,7 @@ export const WRITING: [number, number][] = [
 
 export const OMAR: ActingTrack = {
   defaultLayer: {L: 'back', R: 'front'},
+  idlePhase: 2.1,
   L: [
     {at: 0, dur: 1, arm: 'rest'},
     // 7–16 s: compares three possible directions

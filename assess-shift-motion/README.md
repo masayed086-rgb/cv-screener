@@ -2,7 +2,7 @@
 
 A code-based motion graphics project for the ASSESS SHIFT career coaching campaign. It uses Remotion 4 (React + TypeScript), and every frame is a pure function of the frame number. Project instructions are in `CLAUDE.md`. The cast and acting rules are in `CHARACTER_ROLES.md`, `CHARACTER_APPEARANCE.md` and `CHARACTER_MOTION_BIBLE.md`, and the rig layout is in `RIG_ASSET_MAP.json`. The pack's own README is kept as `STARTER_README.md`.
 
-**Status: v1.0, final silent cut.** Layla (coach) and Omar (coachee) are animated through connected joints. The animation is final, but three inputs are still pending: the narration, the live registration link (the end card says PREVIEW until it is set) and final detailed character layers (see "Character art").
+**Status: v1.1, final silent cut.** Layla (coach) and Omar (coachee) are animated through connected joints. The animation is final, but three inputs are still pending: the narration, the live registration link (the end card says PREVIEW until it is set) and final detailed character layers (see "Character art").
 
 ## Outputs
 
@@ -12,7 +12,7 @@ A code-based motion graphics project for the ASSESS SHIFT career coaching campai
 | `out/assess-shift-intro-linkedin.mp4` | **LinkedIn**: 1920×1080, 30 fps, 2250 frames, 75.0 s, H.264 (CRF 16), no audio, with its own layout |
 | `out/conversation-study-silent.mp4` | The pack's 8 s conversation study, rebuilt on the ported rig: 1920×1080, 30 fps, 240 frames |
 | `out/stills/*-storyboard.png` | Key frames from each intro |
-| `out/stills/pose-sheet.png`, `writing-closeup.png` | Every acting pose, plus a close-up of pen-on-page contact |
+| `out/stills/pose-sheet.png`, `writing-close-up.png`, `art-close-up.png` | Every acting pose, a close-up of pen-on-page contact, and a close-up of the character art |
 | `out/studies/*.mp4` | The five graphic motion studies from the earlier pack |
 
 ## Commands
@@ -42,6 +42,16 @@ On this machine `BROWSER_EXECUTABLE` is `/opt/pw-browsers/chromium_headless_shel
   - a pen grip, with the pen drawn over the fingers
   - Omar's watch on his left wrist, and Layla's loafer buckles
   - light shading on the torso and cheeks
+  - **v1.1 faces and hair, redrawn toward the model sheet:**
+    - brown irises clipped inside the eye, with eyelid lines, creases and catchlights
+    - neutral arched brows that lift with the `brow` channel
+    - a shaded nose, real lips (Layla) and a lower lip under a connected mustache (Omar)
+    - ear detail
+    - Layla: fuller shoulder-length waves, side-parted, with locks framing the face
+    - Omar: textured hair with faded sides and a full beard along the jaw
+- **v1.1 motion polish:**
+  - headlines reveal word by word (3-frame stagger; each word fully settled before it is read, and the layout never shifts)
+  - a sub-1° idle head sway, out of phase between the two characters, so they never freeze between gestures (no body bobbing)
 - **Acting engine** (`src/rig/acting.ts`). Every channel is keyframed with smoothstep holds and settles, as in the prototype, and blinks follow the prototype's 2-1-2 frame shape. Each gesture is gaze lead, then a 6-frame anticipation, the action (20–24 frames), a hold and a settle. The listener reacts 4+ frames later, usually with a nod. Feet never move, and there is no sliding of whole characters.
 - **Writing.** I solved the arm angles with forward kinematics:
   - the notebook rests on Omar's screen-left palm and follows it
