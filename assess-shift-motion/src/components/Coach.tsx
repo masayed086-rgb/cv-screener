@@ -5,13 +5,18 @@ import {COLORS, CHARACTERS, FONT} from '../brand';
 // beard cues). It is NOT the approved illustration — replace with separate
 // approved pose artwork when supplied.
 
-type ArmPose = {upper: number; fore: number};
+export type ArmPose = {upper: number; fore: number};
 
 type Props = {
   who: 'samir' | 'nour';
   // Which side of the frame the coach stands on; the inner arm faces centre.
   side: 'left' | 'right';
   inner: ArmPose;
+  outer?: ArmPose;
+  // Head tilt in degrees, positive toward the centre of the frame.
+  tilt?: number;
+  // Notebook opacity (0–1), shown in the listening pose.
+  notebook?: number;
   blink: boolean;
   showTag?: boolean;
 };
@@ -30,9 +35,9 @@ const Arm: React.FC<{shoulderX: number; mirror: boolean; pose: ArmPose; skin: st
   const s = mirror ? -1 : 1;
   return (
     <g transform={`translate(${shoulderX} 112) scale(${s} 1) rotate(${pose.upper})`}>
-      <rect x={-13} y={-6} width={26} height={84} rx={13} fill={COLORS.burgundy} />
+      <rect x={-13} y={-6} width={26} height={84} rx={13} fill={COLORS.burgundy} stroke={COLORS.burgundyShade} strokeWidth={2} />
       <g transform={`translate(0 72) rotate(${pose.fore})`}>
-        <rect x={-12} y={-6} width={24} height={76} rx={12} fill={COLORS.burgundy} />
+        <rect x={-12} y={-6} width={24} height={76} rx={12} fill={COLORS.burgundy} stroke={COLORS.burgundyShade} strokeWidth={2} />
         <rect x={-11} y={62} width={22} height={8} rx={3} fill={COLORS.ivory} />
         <ellipse cx={0} cy={80} rx={10} ry={13} fill={skin} />
       </g>
@@ -40,12 +45,14 @@ const Arm: React.FC<{shoulderX: number; mirror: boolean; pose: ArmPose; skin: st
   );
 };
 
-export const Coach: React.FC<Props> = ({who, side, inner, blink, showTag = true}) => {
+export const Coach: React.FC<Props> = ({who, side, inner, outer = {upper: 6, fore: 0}, tilt = 0, notebook = 0, blink, showTag = true}) => {
   const c = CHARACTERS[who];
-  const rest: ArmPose = {upper: 6, fore: 0};
   // Viewer-left arm is the inner arm for a coach standing on the right.
-  const leftPose = side === 'right' ? inner : rest;
-  const rightPose = side === 'left' ? inner : rest;
+  const leftPose = side === 'right' ? inner : outer;
+  const rightPose = side === 'left' ? inner : outer;
+  // Positive tilt leans the head toward the centre of the frame.
+  const headRotate = side === 'left' ? tilt : -tilt;
+  const head = `rotate(${headRotate} 130 96)`;
   const eyeScale = blink ? 0.12 : 1;
 
   return (
@@ -57,6 +64,7 @@ export const Coach: React.FC<Props> = ({who, side, inner, blink, showTag = true}
         {/* back hair (Nour) */}
         {who === 'nour' && (
           <path
+            transform={head}
             d="M90 62 Q86 16 130 16 Q176 16 172 64 Q178 100 170 126 Q162 116 155 128 Q147 114 140 124 L120 124 Q113 114 105 128 Q98 116 90 126 Q82 100 90 62Z"
             fill={c.hair}
           />
@@ -68,10 +76,6 @@ export const Coach: React.FC<Props> = ({who, side, inner, blink, showTag = true}
         {/* shoes */}
         <path d="M90 494 L127 494 L128 512 Q104 518 78 512 Q80 498 90 494Z" fill="#151517" />
         <path d="M133 494 L170 494 Q180 498 182 512 Q156 518 132 512Z" fill="#151517" />
-
-        {/* arms behind torso edge */}
-        <Arm shoulderX={82} mirror={false} pose={leftPose} skin={c.skin} />
-        <Arm shoulderX={178} mirror pose={rightPose} skin={c.skin} />
 
         {/* neck */}
         <rect x={119} y={86} width={22} height={24} rx={6} fill={c.skin} />
@@ -95,6 +99,18 @@ export const Coach: React.FC<Props> = ({who, side, inner, blink, showTag = true}
         <path d="M152 101 L128 200 L142 292 L150 292 L162 118Z" fill={COLORS.burgundyShade} />
         {who === 'samir' && <rect x={116} y={284} width={28} height={8} fill={COLORS.charcoal} />}
 
+        {/* arms in front of the torso so the listening pose can cross the body */}
+        <Arm shoulderX={82} mirror={false} pose={leftPose} skin={c.skin} />
+        <Arm shoulderX={178} mirror pose={rightPose} skin={c.skin} />
+        {notebook > 0 && (
+          <g opacity={notebook} transform="rotate(-6 130 205)">
+            <rect x={100} y={180} width={62} height={46} rx={4} fill={COLORS.ivory} stroke={COLORS.charcoal} strokeWidth={2} />
+            <rect x={100} y={180} width={9} height={46} rx={3} fill={COLORS.burgundy} />
+            <path d="M117 194 H152 M117 204 H148 M117 214 H140" stroke={COLORS.charcoal} strokeOpacity={0.35} strokeWidth={2} />
+          </g>
+        )}
+
+        <g transform={head}>
         {/* ears */}
         <ellipse cx={100} cy={62} rx={6} ry={9} fill={c.skin} />
         <ellipse cx={160} cy={62} rx={6} ry={9} fill={c.skin} />
@@ -133,6 +149,7 @@ export const Coach: React.FC<Props> = ({who, side, inner, blink, showTag = true}
         ) : (
           <path d="M121 80 Q130 86 139 80" stroke="#8A3B36" strokeWidth={2.4} fill="none" strokeLinecap="round" />
         )}
+        </g>
       </svg>
 
       {showTag && (

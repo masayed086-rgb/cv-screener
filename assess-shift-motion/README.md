@@ -2,12 +2,15 @@
 
 A code-based motion graphics project for the ASSESS SHIFT career coaching campaign. It uses Remotion 4 (React + TypeScript), and every frame is a pure function of the frame number. The project instructions live in `CLAUDE.md`, the motion rules in `MOTION_PLAYBOOK.md` and the practice brief in `PRACTICE_BRIEF.md`. The starter pack's original README is kept as `STARTER_README.md`.
 
-**Status: v0.1 silent practice draft (12 s).** The coach figures are placeholders, and the end card has no booking link.
+**Status: v0.2 silent drafts.** This version adds the full 75-second introduction in two formats on top of the 12-second practice. The coach figures are still placeholders, there is no voiceover or music yet, and the end card has no booking link.
 
 ## Outputs
 
 | File | What it is |
 | --- | --- |
+| `out/assess-shift-intro-reels-silent.mp4` | **Instagram/Facebook Reels**: 1080×1920, 30 fps, 2250 frames, 75.0 s, H.264, no audio |
+| `out/assess-shift-intro-linkedin-silent.mp4` | **LinkedIn**: 1920×1080, 30 fps, 2250 frames, 75.0 s, H.264, no audio. A separately reflowed layout, not a stretched vertical |
+| `out/stills/intro/reels-storyboard.png`, `linkedin-storyboard.png` | Key frames from each version |
 | `out/career-coaching-practice-silent.mp4` | 1080×1920, 30 fps, 360 frames, 12.0 s, H.264, **no audio track** |
 | `out/stills/frame-{60,150,240,345}.png` | One key frame per scene |
 | `out/stills/contact.png` | All four key frames side by side |
@@ -22,6 +25,8 @@ npm run typecheck
 npm run studio                                   # live preview / scrubbing in the browser
 npm run still -- out/stills/frame-150.png --frame=150
 npm run render                                   # -> out/career-coaching-practice-silent.mp4
+npm run render:reels                             # -> out/assess-shift-intro-reels-silent.mp4
+npm run render:linkedin                          # -> out/assess-shift-intro-linkedin-silent.mp4
 ```
 
 The `still` and `render` scripts pass `--browser-executable`. On this machine it points at the pre-installed Chromium headless shell. Elsewhere, set `BROWSER_EXECUTABLE`, or drop the flag and let Remotion download its own browser.
@@ -37,6 +42,25 @@ The `still` and `render` scripts pass `--browser-executable`. On this machine it
 | `src/components/` | `Coach` (placeholder vector figure), `Card`, `Headline` |
 | `public/fonts/` | Quicksand 500/700, bundled locally from @fontsource (OFL) |
 | `brand/` | Brand brief, character sheet document, and the extracted character-sheet image |
+
+## Full introduction (75 s): `IntroReels` / `IntroLinkedIn`
+
+Both compositions render the same `src/intro/IntroVideo.tsx` with a different layout from `src/intro/formats.ts`. The copy and scene timing are in `src/intro/script.ts`, coach poses and visibility in `src/intro/coaches.tsx`, and the scenes themselves in `src/intro/scenes.tsx`.
+
+| Time | Scene | On screen | Motion |
+| --- | --- | --- | --- |
+| 0–7 s | Question | What comes **next?** | Nour enters holding a notebook. A burgundy path draws a question mark, the dot pops in, and Nour gestures toward it. |
+| 7–16 s | Options | A new role? **A new direction?** | Three equal option cards rise in with a stagger. Income / Family / Experience chips follow. Samir enters. |
+| 16–25 s | Brand | ASSESS SHIFT · Career Coaching · by ASSESS International | A path line draws across and reveals the name behind it. Samir's and Nour's portraits pop in together at the same size. |
+| 25–38 s | Understand | Understand **yourself** at work | Samir presents. Interests and Motivation cards enter, and paths connect them to "Your experience". |
+| 38–51 s | Compare | Explore **realistic** directions | Nour presents. Skills / Market / Life priorities lenses link to each option in turn, for the same 46 frames each, then all three hold equally. Personality note shown. |
+| 51–61 s | Plan | Build a **practical** transition plan | Samir presents. The path progresses through three modest milestones: Reflect, Test an option, Take the next step. |
+| 61–68 s | Packages | Different levels of **support** | Career Clarity, Career Direction and Career Transformation cards, all identical in treatment. |
+| 68–75 s | End card | Start with a Chemistry Session · Submit your registration request | A deep burgundy circle wipe, then the lockup, coach portraits and CTA. Static for about 4 s. Labelled PREVIEW until `END_CARD.url` is set. |
+
+Roles are balanced: Nour presents in scenes 1, 2 and 5, and Samir in scenes 4 and 6. Both share the brand, packages and end card at equal size. No scores, prices, durations, guarantees or "free" claims appear anywhere.
+
+**Timing is provisional.** It follows the storyboard, not a recording. Once the voiceover exists, re-time `src/intro/script.ts` to the audio and add captions from the real timing.
 
 ## Scene plan (silent practice)
 
@@ -60,7 +84,8 @@ The `still` and `render` scripts pass `--browser-executable`. On this machine it
 2. **Approved ASSESS logo.** The lockup is typed text until the logo is supplied.
 3. **Supporting typeface.** Aptos is not bundled, so Quicksand 500 is used as the fallback.
 4. **Reference footage.** The UpSend video could not be played in this environment. All motion values are the playbook's proposals, not measurements. Put 6–10 frames or a rights-cleared clip in `references/` to calibrate them.
-5. **Voiceover, music and registration URL.** Not needed for the practice, but required for the full 75 s video.
+5. **Voiceover, music and registration URL.** The 75 s videos are silent. To add them, place the licensed audio in `public/`, add an `<Audio>` to `IntroVideo`, re-time the scenes to the voice, and set `END_CARD.url`.
+6. **Arabic version.** Not built yet. It needs Noto Sans Arabic files and an RTL layout pass.
 
 ## Decisions for review
 
