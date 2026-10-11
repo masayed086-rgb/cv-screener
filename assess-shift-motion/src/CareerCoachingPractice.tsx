@@ -2,14 +2,11 @@ import {AbsoluteFill, interpolate, spring, useCurrentFrame, useVideoConfig} from
 import './fonts';
 import {COLORS, FONT} from './brand';
 import {DUR, EASE_IN_OUT, EASE_OUT, OFFSET, enter, track} from './motion';
-import {CARDS, COACH_POSES, LAYOUT, LOCKUP, MARK, PATH, SCENES} from './timeline';
+import {CARDS, PRACTICE_POSES, LAYOUT, LOCKUP, MARK, PATH, SCENES} from './timeline';
 import {Card} from './components/Card';
-import {Coach} from './components/Coach';
+import {PhotoCoach, poseState} from './components/PhotoCoach';
 import {Headline} from './components/Headline';
 
-// Deterministic blink schedule (offset per coach so they never blink together).
-const BLINKS = {samir: [52, 200, 318], nour: [70, 160, 300]};
-const isBlinking = (frame: number, starts: number[]) => starts.some((s) => frame >= s && frame < s + 3);
 
 const progress = (frame: number, [a, b]: readonly [number, number], easing = EASE_OUT) =>
   interpolate(frame, [a, b], [0, 1], {easing, extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
@@ -35,10 +32,6 @@ export const CareerCoachingPractice: React.FC = () => {
 
   // Coaches enter together with matched treatment.
   const coachIn = enter(frame, 0, DUR.coach, OFFSET.coach);
-  const pose = (who: 'samir' | 'nour') => ({
-    upper: track(frame, COACH_POSES[who].inner.upper, EASE_IN_OUT),
-    fore: track(frame, COACH_POSES[who].inner.fore, EASE_IN_OUT),
-  });
 
   // Option cards share emphasis while both are compared — never one alone.
   const optionEmphasis = progress(frame, [200, 216]) * (1 - progress(frame, [272, 284]));
@@ -157,23 +150,26 @@ export const CareerCoachingPractice: React.FC = () => {
       {/* coaches: matched size, mirrored positions */}
       {(
         [
-          ['samir', 'left', LAYOUT.samirX],
-          ['nour', 'right', LAYOUT.nourX],
+          ['samir', LAYOUT.samirX],
+          ['nour', LAYOUT.nourX],
         ] as const
-      ).map(([who, side, cx]) => (
-        <div
-          key={who}
-          style={{
-            position: 'absolute',
-            left: cx - 130,
-            top: LAYOUT.floorY - LAYOUT.coachHeight,
-            opacity: coachIn.opacity,
-            transform: `translateY(${coachIn.offset}px)`,
-          }}
-        >
-          <Coach who={who} side={side} inner={pose(who)} blink={isBlinking(frame, BLINKS[who])} />
-        </div>
-      ))}
+      ).map(([who, cx]) => {
+        const p = poseState(frame, PRACTICE_POSES[who]);
+        return (
+          <div
+            key={who}
+            style={{
+              position: 'absolute',
+              left: cx,
+              top: LAYOUT.floorY,
+              opacity: coachIn.opacity,
+              transform: `translateY(${coachIn.offset}px)`,
+            }}
+          >
+            <PhotoCoach bodyHeight={LAYOUT.coachHeight} from={p.from} to={p.to} t={p.t} tag="REFERENCE CROP · NOT FINAL ART" />
+          </div>
+        );
+      })}
 
       {/* draft label */}
       <div
@@ -190,7 +186,7 @@ export const CareerCoachingPractice: React.FC = () => {
           opacity: 0.4,
         }}
       >
-        SILENT DRAFT · PREVIEW · v0.1
+        SILENT DRAFT · PREVIEW · v0.3
       </div>
     </AbsoluteFill>
   );

@@ -1,7 +1,7 @@
-import {interpolate} from 'remotion';
+import {Img, interpolate, staticFile} from 'remotion';
 import {COLORS, FONT} from '../brand';
 import {DUR, EASE_IN_OUT, EASE_OUT, OFFSET, enter} from '../motion';
-import {Coach} from '../components/Coach';
+import {PORTRAITS} from '../coachAssets';
 import type {Layout} from './formats';
 
 export const clamp01 = (frame: number, a: number, b: number, easing = EASE_OUT) =>
@@ -242,12 +242,13 @@ export const Stroke: React.FC<{d: string; drawn: number; trimmed?: number; width
     />
   );
 
-// Head-and-shoulders crop of the (placeholder) coach inside a circle.
+// Head-and-shoulders photo of a coach inside a circle (interim reference crop).
 export const Portrait: React.FC<{
   who: 'samir' | 'nour';
   x: number;
   y: number;
   d: number;
+  expression?: 'listening' | 'curious' | 'encouraging';
   scale?: number;
   opacity?: number;
   bg?: string;
@@ -255,16 +256,15 @@ export const Portrait: React.FC<{
   label?: string;
   labelColor?: string;
   caption?: string;
-  blink?: boolean;
-}> = ({who, x, y, d, scale = 1, opacity = 1, bg = COLORS.softRose, ring = COLORS.burgundy, label, labelColor = COLORS.charcoal, caption, blink = false}) => {
+}> = ({who, x, y, d, expression = 'encouraging', scale = 1, opacity = 1, bg = COLORS.softRose, ring = COLORS.burgundy, label, labelColor = COLORS.charcoal, caption}) => {
   if (opacity <= 0.001) return null;
-  const s = d / 128;
   return (
     <div style={{position: 'absolute', left: x - d / 2, top: y - d / 2, width: d, opacity, transform: `scale(${scale})`}}>
       <div style={{width: d, height: d, borderRadius: '50%', overflow: 'hidden', background: bg, position: 'relative', boxShadow: `0 0 0 6px ${ring}`}}>
-        <div style={{position: 'absolute', left: d / 2 - 130 * s, top: d * 0.46 - 58 * s, transform: `scale(${s})`, transformOrigin: '0 0'}}>
-          <Coach who={who} side={who === 'samir' ? 'left' : 'right'} inner={{upper: 6, fore: 0}} tilt={3} blink={blink} showTag={false} />
-        </div>
+        <Img
+          src={staticFile(PORTRAITS[`${who}-${expression}`])}
+          style={{position: 'absolute', left: '-14%', top: '4%', width: '128%', height: '100%', objectFit: 'cover', objectPosition: '50% 20%'}}
+        />
       </div>
       {label && (
         <div style={{marginTop: 22, textAlign: 'center', fontFamily: FONT.family, fontWeight: 700, fontSize: d * 0.15, color: labelColor}}>

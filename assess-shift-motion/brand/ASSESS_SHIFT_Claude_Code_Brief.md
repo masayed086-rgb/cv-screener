@@ -26,7 +26,8 @@ Character implementation:
 - Use the combined Samir and Nour character reference and the consistency locks below. Samir is the male coach and Nour is the female coach. Give them equal professional status and prominence.
 - A model sheet is a reference, not a ready-to-animate transparent asset. Obtain or prepare separate approved artwork for the required poses. Preserve identity during preparation.
 - If final artwork is missing, build the preview with clearly identified placeholders. Do not silently replace either coach with a new character or call a placeholder production-ready.
-- Animate simple layers or pose swaps without distorting body proportions. Avoid simulated lip sync unless appropriate mouth shapes and reviewed timing are available.
+- Use the updated natural photographic character reference. Animate restrained cutouts or pose swaps without bending photographic limbs. Avoid simulated lip sync unless appropriate mouth shapes and reviewed timing are available.
+- Follow CHARACTER_ROLES.md and the scene responsibilities below. Nour leads career questions and option exploration; Samir leads insight and planning; both present the service and CTA. These are presentation assignments, not credential claims.
 - Both coaches listen and help compare options. Career decision ownership remains with the client. Nour must not be depicted as the client.
 
 Content controls:
@@ -121,7 +122,7 @@ Use the approved ASSESS corporate logo. Place “SHIFT” and “Career Coaching
 
 ## Composition and visual language
 
-- Use generous ivory space, adult proportions and simple editorial illustrations. Keep one main idea per frame.
+- Use generous ivory space, realistic photographic coaches and clean 2D explanatory graphics. Keep one main idea per frame.
 
 - Show options as equally sized cards. Bring them into a comparison before highlighting a preferred direction.
 
@@ -155,9 +156,9 @@ Samir and Nour are fictional career coaches with equal prominence. Each can lead
 
 | Hair | Short dark brown hair, neatly groomed, with subtle grey at the temples. | Dark brown shoulder-length wavy hair with a side part. |
 
-| Clothing | Burgundy open blazer, ivory open-collar shirt, charcoal tailored trousers and charcoal leather shoes. No tie. | Burgundy open blazer, ivory crew-neck blouse, charcoal tailored trousers and flat charcoal loafers. |
+| Clothing | Burgundy open blazer, ivory open-collar shirt, charcoal tailored trousers and charcoal leather shoes. No tie. | Burgundy open blazer, ivory softly open-neck blouse, charcoal tailored trousers and flat charcoal loafers. |
 
-| Illustration | Refined 2D editorial style with adult proportions, clean contours and minimal shading. | The same editorial style, detail and professional presence as Samir. |
+| Appearance | Natural photographic realism: adult anatomy, subtle skin texture, individual hair strands and believable fabric folds. | The same photographic realism, soft studio light and professional presence as Samir. |
 
 | Props | Ivory notebook, burgundy pen, neutral option cards and a simple light chair. | The same props, scale and visual treatment as Samir. |
 
@@ -173,7 +174,7 @@ Active Listening: seated with an open posture and notebook on the lap, attending
 
 ## Character continuity
 
-Lock each coach’s facial structure, complexion, hair, outfit, shoes, body proportions and line weight. Keep expressions and gestures consistent with the combined reference sheet on the next page. Neither fictional character carries an accreditation claim or represents an actual facilitator.
+Lock each coach’s facial structure, complexion, hair, outfit, shoes, adult proportions and lighting. Keep expressions and gestures consistent with the updated realistic sheet on the next page. Neither fictional character carries an accreditation claim or represents an actual facilitator.
 
 
 ---
@@ -185,11 +186,11 @@ Use this sheet as the shared visual reference for Samir and Nour throughout the 
 
 ## Use in animation
 
-Keep the characters’ appearance consistent with this reference. Prepare separate artwork for each selected pose and transparent layers where movement requires them. The combined board is a reference image; it is not a complete set of animation layers.
+Use the updated realistic appearance in every scene. Prepare separate transparent pose assets. Animate the whole cutout with restrained translation, camera depth and pose changes. The board is a static reference, not a rig. Full body gestures and lip sync require suitable animation assets.
 
 ## Prompt for further character assets
 
-Use the supplied combined coach reference. Render the specified coach and pose in the same refined editorial style with warm ivory, burgundy and charcoal colours. Preserve the exact face, hair, wardrobe and adult proportions. Use calm, attentive expressions and open gestures. Keep the full body visible. Do not add text, logos, credentials, extra fingers or exaggerated facial features.
+Use the supplied realistic coach reference. Render the specified coach and pose with natural photographic skin, hair and fabric detail, soft warm studio light and believable anatomy. Preserve face, hair, wardrobe and adult proportions. Use calm expressions and open gestures. Keep the full body visible. Avoid text, credentials, extra fingers and plastic skin.
 
 Visual reference: use the combined Samir and Nour coach sheet supplied with this brief. Both characters are coaches. Preserve each identity in further assets.
 
@@ -218,11 +219,11 @@ Career Coaching |
 
 | 51–61 | A next-step plan appears beside Samir. The path progresses through modest milestones. | Build a practical transition plan |
 
-| 61–68 | Three equal package cards appear briefly. | Career Clarity
+| 61–68 | Both coaches frame three equal package cards without recommending a package for every viewer. | Career Clarity
 Career Direction
 Career Transformation |
 
-| 68–75 | End card with a clear action. Hold it long enough to read. | Start with a Chemistry Session
+| 68–75 | Both coaches share the end card with a clear action. Hold the final layout for at least three seconds. | Start with a Chemistry Session
 Submit your registration request |
 
 ## How SHIFT appears in the story
@@ -332,3 +333,51 @@ Start with a storyboard preview. Add a reviewed voice recording and licensed mus
 ## Source references
 
 ASSESS SHIFT Career Coaching Catalogue: slides 4–8, 16–18 and 20–23. Assess Career Coaching Registration v7: career context questions, package cards, submission section, footer and script. The palette standard, characters, campaign headline, scripts and video treatment are proposed creative directions.
+
+
+---
+
+
+# Character Roles in the Video
+
+These are creative presentation roles for the introduction. Both characters are career coaches with equal professional status. Their topics organize the story; they do not imply different credentials or restrict what either coach can do in a real coaching journey.
+
+| Character | Primary presentation role | Actions |
+
+| --- | --- | --- |
+
+| Nour | Career questions and option exploration | Introduces the opening question; invites comparison of career directions with experience, market opportunities and life priorities. |
+
+| Samir | Assessment insights and practical planning | Introduces interests and motivation; connects insights to experience; presents manageable transition steps. |
+
+| Both | Service introduction and invitation | Present ASSESS SHIFT, the three packages and the Chemistry Session. Each listens and helps the viewer reflect. |
+
+## Scene responsibilities
+
+| Time | Lead | Responsibility |
+
+| --- | --- | --- |
+
+| 00–07 | Nour | Recognize the viewer’s career question. |
+
+| 07–16 | Graphics | Show options with no character making a decision. |
+
+| 16–25 | Both | Introduce the service with matched portrait prominence. |
+
+| 25–38 | Samir | Introduce interests and motivation insight cards. |
+
+| 38–51 | Nour | Explore realistic options and life priorities. |
+
+| 51–61 | Samir | Explain practical next steps and testing an option. |
+
+| 61–68 | Both | Present package names with neutral equal treatment. |
+
+| 68–75 | Both | Invite a Chemistry Session; hold the CTA. |
+
+## Voice and movement
+
+Use one external narrator for the first version. The coaches support the narration visually; mouths remain still. Optional alternating character voices require separate reviewed recordings and appropriate mouth assets. Use restrained cutout movement and planned pose changes for photographic characters.
+
+## Balance and decision ownership
+
+The provisional plan gives Nour 20 seconds of solo scenes, Samir 23 and both 23 seconds together; graphics occupy 9 seconds. Keep visual scale and authority comparable. No extra client character is required. The viewer owns the career decision.

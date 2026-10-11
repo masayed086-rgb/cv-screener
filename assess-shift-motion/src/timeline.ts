@@ -1,3 +1,5 @@
+import type {PoseId} from './coachAssets';
+
 // Scene timing, copy and choreography data for the 12-second practice.
 // Frame ranges are start-inclusive, end-exclusive. Rendering components read
 // from here; edit timing or copy in this file, not in the components.
@@ -135,23 +137,12 @@ export const CARDS: CardTrack[] = [
   },
 ];
 
-// Coach arm poses in degrees (upper arm, forearm), keyed by frame.
-// Positive rotation lifts an arm outward (away from the body); the inner arm is the one
-// facing the centre of the frame.
-export const COACH_POSES = {
-  samir: {
-    inner: {
-      upper: [[100, 6], [116, 70], [186, 70], [202, 95], [272, 95], [288, 6]] as Key[],
-      fore: [[100, 0], [116, 45], [186, 45], [202, 30], [272, 30], [288, 0]] as Key[],
-    },
-  },
-  nour: {
-    inner: {
-      upper: [[96, 6], [112, 70], [182, 70], [198, 95], [272, 95], [288, 6]] as Key[],
-      fore: [[96, 0], [112, 45], [182, 45], [198, 30], [272, 30], [288, 0]] as Key[],
-    },
-  },
-} as const;
+// Photo-coach pose changes (aligned crossfades). Nour presents "Interests",
+// Samir "Motivation"; both keep the open-hand pose through the comparison.
+export const PRACTICE_POSES = {
+  samir: [[0, 'samir-standing-front'], [100, 'samir-exploring-options'], [272, 'samir-standing-front']],
+  nour: [[0, 'nour-standing-front'], [96, 'nour-exploring-options'], [272, 'nour-standing-front']],
+} as const satisfies Record<'samir' | 'nour', readonly (readonly [number, PoseId])[]>;
 
 // Burgundy path: trunk from insights, two equal branches to the option cards,
 // then the trunk extends into the next-step mark.

@@ -6,6 +6,8 @@ All numbers below are starting settings for our campaign. They are not measured 
 
 Use clear 2D illustrations, option cards, abstract assessment insights and a recurring burgundy path. Establish a question, show exploration, then clarify the next step. Design illustrations and typography together. Keep professional warmth and the viewer's decision ownership.
 
+Character update: use the natural photographic coaches in `brand/Realistic_Coach_Reference.png`, combined with clean 2D explanatory graphics. The earlier illustrated character appearance is superseded. Follow CHARACTER_APPEARANCE.md for pose preparation and CHARACTER_ROLES.md for presentation assignments.
+
 The reference creator documents a script → storyboard → visual style → design → voiceover → animation → sound workflow. Adopt that sequence. Establish narration timing before polishing a narrated final.
 
 ## Motion settings at 30 fps
@@ -38,6 +40,8 @@ Numbers assume a 1080-pixel short edge. Scale offsets sensibly across formats; a
 ## Characters
 
 Samir and Nour share prominence, visual scale and authority. Each can ask questions, introduce insight cards and help compare options. Preserve identity from the character sheet. Use matched pose sets and consistent line weight.
+
+For realistic cutouts, preserve photographic texture and lighting rather than line weight. Use only small whole-cutout moves, compatible pose changes and subtle camera depth unless prepared rigs or verified character video are supplied. Do not deform the face or bend a photographed limb.
 
 For the practice, both remain visible across the sequence. If a full-video scene features one coach, balance presentation roles over the whole video. Do not assign one coach all the expert actions and the other only passive reactions.
 

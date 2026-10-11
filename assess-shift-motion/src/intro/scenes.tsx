@@ -165,7 +165,6 @@ export const SceneBrand: React.FC<P> = ({L}) => {
             opacity={Math.min(1, pop * 1.4)}
             label={names.opacity > 0.01 ? (who === 'samir' ? 'Samir' : 'Nour') : undefined}
             caption="Career coach"
-            blink={(f + i * 40) % 90 < 3}
           />
         </div>
       ))}
@@ -492,7 +491,6 @@ export const SceneEnd: React.FC<P> = ({L}) => {
           label={who === 'samir' ? 'Samir' : 'Nour'}
           labelColor={COLORS.white}
           caption="Career coach"
-          blink={(f + i * 50) % 100 < 3}
         />
       ))}
     </AbsoluteFill>

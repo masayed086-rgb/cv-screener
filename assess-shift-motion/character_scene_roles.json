@@ -1,0 +1,60 @@
+{
+  "status": "provisional",
+  "fps": 30,
+  "durationInFrames": 2250,
+  "voice": "external narrator",
+  "characters": {
+    "Samir": "assessment insight and transition planning",
+    "Nour": "career reflection and option exploration"
+  },
+  "scenes": [
+    {
+      "startFrame": 0,
+      "endFrameExclusive": 210,
+      "lead": "Nour",
+      "purpose": "career_question"
+    },
+    {
+      "startFrame": 210,
+      "endFrameExclusive": 480,
+      "lead": "Graphics",
+      "purpose": "career_options"
+    },
+    {
+      "startFrame": 480,
+      "endFrameExclusive": 750,
+      "lead": "Both",
+      "purpose": "service_introduction"
+    },
+    {
+      "startFrame": 750,
+      "endFrameExclusive": 1140,
+      "lead": "Samir",
+      "purpose": "assessment_insights"
+    },
+    {
+      "startFrame": 1140,
+      "endFrameExclusive": 1530,
+      "lead": "Nour",
+      "purpose": "realistic_options"
+    },
+    {
+      "startFrame": 1530,
+      "endFrameExclusive": 1830,
+      "lead": "Samir",
+      "purpose": "transition_plan"
+    },
+    {
+      "startFrame": 1830,
+      "endFrameExclusive": 2040,
+      "lead": "Both",
+      "purpose": "packages"
+    },
+    {
+      "startFrame": 2040,
+      "endFrameExclusive": 2250,
+      "lead": "Both",
+      "purpose": "chemistry_session_cta"
+    }
+  ]
+}

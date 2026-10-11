@@ -51,7 +51,7 @@ export const IntroVideo: React.FC<IntroProps> = ({format}) => {
           opacity: 0.4,
         }}
       >
-        SILENT DRAFT · PLACEHOLDER COACHES · v0.2
+        SILENT DRAFT · REFERENCE-CROP COACHES · v0.3
       </div>
     </AbsoluteFill>
   );

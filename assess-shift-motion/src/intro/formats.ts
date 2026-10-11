@@ -12,7 +12,7 @@ export type Layout = {
   sub: {top: number; side: number; size: number};
   // Centre of the main stage where cards and diagrams live.
   stage: {x: number; y: number};
-  coaches: {samirX: number; nourX: number; floorY: number; scale: number};
+  coaches: {samirX: number; nourX: number; floorY: number; bodyHeight: number};
   draftLabel: {bottom: number; size: number};
 };
 
@@ -25,7 +25,7 @@ export const LAYOUTS: Record<FormatId, Layout> = {
     headline: {top: 200, side: 90, size: 80},
     sub: {top: 400, side: 110, size: 38},
     stage: {x: 540, y: 790},
-    coaches: {samirX: 260, nourX: 820, floorY: 1620, scale: 1},
+    coaches: {samirX: 250, nourX: 830, floorY: 1625, bodyHeight: 545},
     draftLabel: {bottom: 90, size: 22},
   },
   linkedin: {
@@ -36,7 +36,7 @@ export const LAYOUTS: Record<FormatId, Layout> = {
     headline: {top: 64, side: 200, size: 68},
     sub: {top: 160, side: 300, size: 32},
     stage: {x: 960, y: 560},
-    coaches: {samirX: 240, nourX: 1680, floorY: 1000, scale: 0.98},
+    coaches: {samirX: 250, nourX: 1670, floorY: 1005, bodyHeight: 520},
     draftLabel: {bottom: 22, size: 18},
   },
 };

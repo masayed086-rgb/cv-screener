@@ -4,7 +4,7 @@ Act as a motion designer and video engineer. Build editable, reproducible explai
 
 ## Read before building
 
-- Read `README.md`, `MOTION_PLAYBOOK.md`, `PRACTICE_BRIEF.md`, and `REFERENCE_NOTES.md`.
+- Read `README.md`, `MOTION_PLAYBOOK.md`, `MOTION_TRAINING.md`, `HOW_TO_USE.md`, `CHARACTER_ROLES.md`, `CHARACTER_APPEARANCE.md`, `PRACTICE_BRIEF.md`, and `REFERENCE_NOTES.md`.
 - Read `brand/ASSESS_SHIFT_Claude_Code_Brief.md` for the service, brand, characters and provisional full-video script.
 - Inspect supplied character artwork before using it. Samir is the male coach; Nour is the female coach. Both are coaches, with equal status and prominence.
 - Inspect the existing repository and preserve its working video framework. For a new project, prefer React + TypeScript + Remotion. Check current official documentation before using unfamiliar APIs.
@@ -23,8 +23,10 @@ Act as a motion designer and video engineer. Build editable, reproducible explai
 - Palette: burgundy #91212E, deep burgundy #3A0A10, charcoal #242427, ivory #FAF7F2, soft rose #F5E9E9.
 - Use Quicksand headlines where approved local font files are available. Document any fallback. Verify Arabic shaping and RTL layout in Arabic versions.
 - Preserve each coach's face, hair, complexion, outfit and proportions. Neither coach is a client. Keep both professionally capable.
-- A combined character sheet is a reference image, not a layered animation rig. Use identified placeholders if separate approved pose assets are missing.
-- Use pose swaps or restrained layer animation. Do not distort bodies or simulate talking without suitable mouth assets and reviewed timing.
+- Use the updated natural photographic reference in `brand/Realistic_Coach_Reference.png`. It replaces the earlier illustrated appearance. Match skin texture, anatomy, hair strands, fabric, age and lighting.
+- Nour leads career questions and option exploration; Samir leads assessment insights and practical planning. Both introduce the service, packages and CTA. Follow `CHARACTER_ROLES.md`; these are creative presentation roles.
+- The PNG board and `brand/ASSESS_SHIFT_Realistic_Coaches.svg` are character references. The SVG embeds the same PNG and has no editable vector body parts. Neither is an animation rig. Use identified placeholders if separate approved pose assets are missing.
+- Move photographic cutouts as a whole, use limited camera depth, or crossfade compatible poses. Do not bend photographic limbs or simulate talking without suitable mouth assets and reviewed timing. A true articulated gesture needs a rig or a verified video asset.
 
 ## Motion and code rules
 
@@ -41,6 +43,7 @@ Act as a motion designer and video engineer. Build editable, reproducible explai
 2. Write a scene plan with time range, narration, headline, visual, motion and transition.
 3. Design key frames before detailed animation.
 4. Build the 12-second practice composition first. Render a silent draft and inspect it.
+   When asked to learn motion, complete the eight controlled exercises in `MOTION_TRAINING.md` before integrating them. Compare alternative versions with one variable changed.
 5. Apply review feedback, then record accepted rules in `MOTION_PLAYBOOK.md` and an approved example in the project.
 6. Extend to the full script only when asked. Align final scene timing to actual voiceover.
 7. Check every scene, render the final export, and provide commands that were actually used.
@@ -53,3 +56,12 @@ Act as a motion designer and video engineer. Build editable, reproducible explai
 - Deliver editable source, a scene timing file, representative preview frames, MP4 if successfully rendered, and a README with working preview/export commands.
 - Verify output dimensions, duration, frame rate, clipping, text readability, character identity and sound. State what was checked and what remains unresolved.
 - Label a silent draft clearly. Do not claim narration, final captions or an MP4 exists unless the relevant files exist and were inspected.
+
+## Motion learning and review
+
+- Use `examples/MotionRecipes.tsx` as a starter implementation. Integrate it into an existing Remotion project; do not overwrite its entry point.
+- Convert seconds to frames with the composition's fps. Record frame ranges as start-inclusive and end-exclusive.
+- In a Sequence, use local frame time for local events. Convert global markers explicitly; do not subtract the scene start twice.
+- Add anticipation only to explanatory graphic actions, with small offsets. Keep realistic coach movement calm and anatomically plausible.
+- Specify every motion by trigger frame, duration, distance, easing, reading hold and exit/transition. Avoid vague requests such as 'make it more dynamic'.
+- After review, retain the accepted source, rendered example and rationale. Add only accepted general rules to the playbook. Do not call an unreviewed sample an approved style.

@@ -4,6 +4,7 @@ import {VIDEO} from './timeline';
 import {IntroVideo} from './intro/IntroVideo';
 import {LAYOUTS} from './intro/formats';
 import {INTRO_DURATION, INTRO_FPS} from './intro/script';
+import {MotionRecipeCompositions} from './examples/MotionRecipes';
 
 export const RemotionRoot: React.FC = () => (
   <>
@@ -36,6 +37,9 @@ export const RemotionRoot: React.FC = () => (
         fps={VIDEO.fps}
         durationInFrames={VIDEO.durationInFrames}
       />
+    </Folder>
+    <Folder name="MotionStudies">
+      <MotionRecipeCompositions />
     </Folder>
   </>
 );
