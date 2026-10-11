@@ -19,28 +19,28 @@ export const LAYLA: ActingTrack = {
   defaultLayer: {L: 'back', R: 'front'},
   idlePhase: 0,
   L: [
-    {at: 0, dur: 1, arm: 'clasp'},
+    {at: 0, dur: 1, arm: 'rest'},
     {at: 2056, dur: 22, arm: 'welcome'},
   ],
   R: [
-    {at: 0, dur: 1, arm: 'clasp'},
+    {at: 0, dur: 1, arm: 'rest'},
     // 16–25 s: invites Omar into the conversation (service introduction)
     {at: 506, dur: 6, arm: 'anticipate'},
     {at: 512, dur: 22, arm: 'ask'},
-    {at: 604, dur: 16, arm: 'clasp'},
+    {at: 604, dur: 16, arm: 'rest'},
     // 25–38 s: explains insight — presents the insight cards, then experience
     {at: 782, dur: 6, arm: 'anticipate'},
     {at: 788, dur: 22, arm: 'present'},
     {at: 918, dur: 18, arm: 'presentLow'},
-    {at: 1060, dur: 16, arm: 'clasp'},
+    {at: 1060, dur: 16, arm: 'rest'},
     // 38–51 s: asks an open question, then listens
     {at: 1156, dur: 6, arm: 'anticipate'},
     {at: 1162, dur: 20, arm: 'ask'},
-    {at: 1222, dur: 16, arm: 'clasp'},
+    {at: 1222, dur: 16, arm: 'rest'},
     // 61–68 s: presents the three equal package cards
     {at: 1846, dur: 6, arm: 'anticipate'},
     {at: 1852, dur: 22, arm: 'present'},
-    {at: 1990, dur: 16, arm: 'clasp'},
+    {at: 1990, dur: 16, arm: 'rest'},
     {at: 2056, dur: 22, arm: 'welcome'},
   ],
   look: [
@@ -63,11 +63,11 @@ export const LAYLA: ActingTrack = {
     lk(1984, L_OMAR),
     lk(2050, VIEWER, 12),
   ],
-  nods: [128, 396, 1272, 1744, 2000],
+  nods: [128, 396, 1290, 1744, 2000],
   blinks: [57, 160, 262, 371, 470, 560, 690, 803, 905, 1015, 1118, 1214, 1330, 1421, 1520, 1630, 1716, 1810, 1920, 2030, 2117, 2203],
 };
 
-// Writing strokes and the matching notebook lines / plan milestones.
+// Beats where Omar lays out each step; the plan milestones land at their ends.
 export const WRITING: [number, number][] = [
   [1590, 1626],
   [1640, 1676],
@@ -85,26 +85,18 @@ export const OMAR: ActingTrack = {
     {at: 318, dur: 20, arm: 'present'},
     {at: 426, dur: 18, arm: 'rest'},
     // 38–51 s: responds — explains his priorities
-    {at: 1204, dur: 6, arm: 'anticipate'},
-    {at: 1210, dur: 22, arm: 'ask'},
-    {at: 1276, dur: 18, arm: 'rest'},
-    // 51–61 s: supports the notebook while he writes his next step
-    {at: 1548, dur: 22, arm: 'holdBook'},
+    {at: 1236, dur: 6, arm: 'anticipate'},
+    {at: 1242, dur: 22, arm: 'ask'},
+    {at: 1304, dur: 18, arm: 'rest'},
+    // 51–61 s: lays out his next steps, opening his hand toward each one
+    {at: 1552, dur: 6, arm: 'anticipate'},
+    {at: 1558, dur: 22, arm: 'presentLow'},
+    {at: 1640, dur: 16, arm: 'present'},
     {at: 1776, dur: 18, arm: 'rest'},
     {at: 2060, dur: 22, arm: 'welcome'},
   ],
   R: [
     {at: 0, dur: 1, arm: 'rest'},
-    // 0–7 s: reflects, hand to chin
-    {at: 32, dur: 6, arm: 'anticipate'},
-    {at: 38, dur: 24, arm: 'chin'},
-    {at: 176, dur: 20, arm: 'rest'},
-    // 25–38 s: thinks the insight over
-    {at: 958, dur: 24, arm: 'chin'},
-    {at: 1074, dur: 20, arm: 'rest'},
-    // 51–61 s: writes
-    {at: 1556, dur: 22, arm: 'write'},
-    {at: 1770, dur: 18, arm: 'rest'},
     {at: 2060, dur: 22, arm: 'welcome'},
   ],
   look: [
@@ -123,25 +115,13 @@ export const OMAR: ActingTrack = {
     lk(1078, O_LAYLA),
     lk(1150, O_LAYLA),
     lk(1286, {head: -1, eyeX: -1.2, eyeY: -0.6}),
-    lk(1544, {head: 1, eyeX: -0.4, eyeY: 2.2}, 10),
+    lk(1544, {head: -1, eyeX: -1.2, eyeY: -0.6}, 10),
     lk(1736, {head: -2, eyeX: -1.5, eyeY: 0, brow: 1}, 10),
     lk(1840, O_STAGE),
     lk(1986, O_LAYLA),
     lk(2052, VIEWER, 12),
   ],
-  nods: [552, 1004, 1996],
+  // He nods as each plan milestone lands (WRITING ends), plus listening nods.
+  nods: [552, 1004, 1626, 1676, 1726, 1996],
   blinks: [88, 199, 305, 402, 517, 628, 741, 858, 969, 1060, 1170, 1268, 1372, 1475, 1590, 1700, 1792, 1888, 1988, 2079, 2165],
-  notebook: [
-    {at: 1552, dur: 14, v: 1},
-    {at: 1772, dur: 14, v: 0},
-  ],
-  pen: [
-    {at: 1560, dur: 12, v: 1},
-    {at: 1768, dur: 12, v: 0},
-  ],
-  writing: WRITING,
 };
-
-// Lines appear in the notebook as each stroke range completes.
-export const notebookLinesAt = (t: number) =>
-  WRITING.reduce((n, [a, b]) => n + Math.max(0, Math.min(1, (t - a) / (b - a))), 0);

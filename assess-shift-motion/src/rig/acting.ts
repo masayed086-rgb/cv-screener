@@ -21,7 +21,7 @@ export const ARM = {
   ask: {u: 19, f: 64, w: -14, hand: 'open'},
   present: {u: 40, f: 74, w: -12, hand: 'open'},
   presentLow: {u: 24, f: 48, w: -12, hand: 'open'},
-  welcome: {u: 12, f: 28, w: -10, hand: 'open'},
+  welcome: {u: 6, f: 14, w: -6, hand: 'open'},
   clasp: {u: -6, f: -40, w: -12, hand: 'relaxed', layer: 'front'},
   chin: {u: -8, f: -158, w: -4, hand: 'relaxed', layer: 'top'},
   holdBook: {u: 18, f: -54, w: 0, hand: 'relaxed', layer: 'front'},

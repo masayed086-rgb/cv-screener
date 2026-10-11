@@ -71,3 +71,30 @@ export const ArtCloseUp: React.FC = () => (
     </svg>
   </AbsoluteFill>
 );
+
+// Puppet (model-sheet art) poses for review.
+import {Puppet} from './Puppet';
+export const PuppetSheet: React.FC = () => {
+  const P: [('layla' | 'omar'), string, Pose][] = [
+    ['layla', 'rest', pose('rest', 'rest')],
+    ['layla', 'ask', pose('rest', 'ask', {head: 2})],
+    ['layla', 'present', pose('rest', 'present')],
+    ['layla', 'welcome', pose('welcome', 'welcome', {blink: 0.07})],
+    ['omar', 'rest', pose('rest', 'rest')],
+    ['omar', 'respond', pose('ask', 'rest', {head: -2})],
+    ['omar', 'present', pose('present', 'rest')],
+    ['omar', 'welcome', pose('welcome', 'welcome', {blink: 0.5})],
+  ];
+  return (
+    <AbsoluteFill style={{background: COLORS.ivory}}>
+      <svg width={1920} height={1080}>
+        {P.map(([who, label, p], i) => (
+          <g key={i} transform={`translate(${20 + (i % 4) * 480} ${i < 4 ? 10 : 545}) scale(0.48)`}>
+            <g transform="translate(300 0)"><Puppet who={who} pose={{...p, L: {...p.L, layer: 'front'}, R: {...p.R, layer: 'front'}}} /></g>
+            <text x={520} y={1100} textAnchor="middle" fontSize={44} fill={COLORS.charcoal} fontFamily="sans-serif">{who} · {label}</text>
+          </g>
+        ))}
+      </svg>
+    </AbsoluteFill>
+  );
+};
