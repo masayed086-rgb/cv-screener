@@ -69,28 +69,45 @@
       armF: { sh: 0, el: 0, wr: 0, hand: 'relaxed' },
     };
   }
-  // Rest hands on the near thigh (IK in the torso frame).
-  function lapArms(id, pose) {
+  // Two-bone IK that picks the elbow solution on the requested side of the
+  // shoulder-wrist line: 'down' (larger y) or 'back' (smaller x, away from the
+  // facing direction). handAbs is the hand's absolute angle in the torso frame.
+  function ikArm(id, side, wrist, handAbs, prefer, hand) {
     const sp = CHAR[id];
-    const tw = sp.waist;
-    // targets in torso frame: thigh top surface is ~ pelvis y -28 when seated
-    const tN = [86 - tw[0], -26 - tw[1] - 8], tF = [126 - tw[0], -34 - tw[1] - 8];
-    const aN = solveArm(sp.shN, tN, sp.upper, sp.fore, 1);
-    const aF = solveArm(sp.shF, tF, sp.upper, sp.fore, 1);
-    pose.armN = { sh: aN.sh, el: aN.el, wr: -aN.sh - aN.el - 96, hand: 'relaxed' };
-    pose.armF = { sh: aF.sh, el: aF.el, wr: -aF.sh - aF.el - 98, hand: 'relaxed' };
+    const sh = side === 'N' ? sp.shN : sp.shF;
+    let best = null;
+    for (const bend of [1, -1]) {
+      const s = solveArm(sh, wrist, sp.upper, sp.fore, bend);
+      const r = (s.sh * Math.PI) / 180;
+      const elbow = [sh[0] - Math.sin(r) * sp.upper, sh[1] + Math.cos(r) * sp.upper];
+      const score = prefer === 'down' ? elbow[1] : -elbow[0];
+      if (!best || score > best.score) best = { score, s };
+    }
+    return { sh: best.s.sh, el: best.s.el, wr: handAbs - best.s.sh - best.s.el, hand: hand || 'relaxed' };
+  }
+  // Rest hands on the thighs (IK in the torso frame), elbows tucked back by the hips.
+  // Seated thigh top is ~ pelvis y -24, i.e. torso y -4; the wrist sits just above it.
+  const LAP = { 'coach-01': { N: [44, -14], F: [92, -20] }, 'coachee-01': { N: [40, -12], F: [90, -18] } };
+  function lapArms(id, pose) {
+    pose.armN = ikArm(id, 'N', LAP[id].N, -100, 'back');
+    pose.armF = ikArm(id, 'F', LAP[id].F, -98, 'back');
     return pose;
   }
   function seated(id) { return lapArms(id, seatedBase(id)); }
 
+  // Coach's open-hand question. overshoot = 1 gives the slightly-past pose before the settle.
+  function offerArm(id, overshoot) {
+    const k = overshoot ? 1.06 : 1;
+    return ikArm(id, 'F', [128 * k, -150 - 8 * overshoot], -112 - 6 * overshoot, 'down', 'offer');
+  }
   function mixArm(a, b, w) {
     return { sh: lerp(a.sh, b.sh, w), el: lerp(a.el, b.el, w), wr: lerp(a.wr, b.wr, w), hand: w < 0.5 ? a.hand : b.hand };
   }
 
   /* ---------- the acting test ---------- */
-  const W = 1080, H = 1920, FLOOR = 1470, SCALE = 0.82;
+  const W = 1080, H = 1920, FLOOR = 1540, SCALE = 0.92;
   const DURATION = 5;
-  const PLACE = { 'coach-01': 318, 'coachee-01': 770 };
+  const PLACE = { 'coach-01': 236, 'coachee-01': 846 };
 
   // vertical root offset so feet rest on the floor (from the rig's own FK)
   const footOffset = {};
@@ -124,8 +141,9 @@
     // ask: 0.12 s anticipation, 0.35 s outward move, 0.22 s settle, hold, relax
     const rest = p.armF;
     const ant = { sh: rest.sh + 4, el: rest.el + 6, wr: rest.wr + 4, hand: 'relaxed' };
-    const out = { sh: -32, el: -62, wr: -28, hand: 'open' };
-    const over = { sh: -35, el: -68, wr: -32, hand: 'open' };
+    // open hand at waist-to-chest height, elbow bent, palm up toward the coachee
+    const out = offerArm(id, 0);
+    const over = offerArm(id, 1);
     const t0 = CUE.coachAsk;
     let a;
     if (t < t0) a = rest;
@@ -161,8 +179,7 @@
     const reach = 50; // wrist to knuckles of the 'chin' hand at the coachee's hand scale
     const wrist = [chinT[0] + Math.sin(r) * reach, chinT[1] - Math.cos(r) * reach];
     const sp = CHAR[id];
-    const s = solveArm(sp.shN, wrist, sp.upper, sp.fore, -1);
-    return { sh: s.sh, el: s.el, wr: handAbs - s.sh - s.el, hand: 'chin', chinT, wrist };
+    return Object.assign(ikArm(id, 'N', wrist, handAbs, 'down', 'chin'), { chinT, wrist });
   }
 
   function coacheePose(t) {
@@ -242,7 +259,7 @@
     return s + '</svg>';
   }
 
-  const API = { EXPRESSIONS, standing, seated, scene, coachPose, coacheePose, DURATION, W, H, FLOOR, SCALE, CUE, COACH_BLINKS, COACHEE_BLINKS, track };
+  const API = { ikArm, lapArms, offerArm, mixArm, blinkAt, chinArm, ease, inv, ap, EXPRESSIONS, standing, seated, scene, coachPose, coacheePose, DURATION, W, H, FLOOR, SCALE, CUE, COACH_BLINKS, COACHEE_BLINKS, track };
   if (typeof module !== 'undefined' && module.exports) module.exports = API;
   else root.ASActing = API;
 })(typeof window !== 'undefined' ? window : globalThis);

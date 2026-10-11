@@ -34,14 +34,14 @@
       skin: '#D9A07E', skinShade: '#C0815F', skinLine: '#8C5540', lip: '#B45E57',
       hipN: [-24, 6], hipF: [22, 6], thigh: 205, shin: 200,
       waist: [0, -20], shN: [-62, -268], shF: [46, -262], neck: [4, -292],
-      upper: 150, fore: 136, footDrop: 18,
+      upper: 168, fore: 150, footDrop: 18,
     },
     'coachee-01': {
       dir: -1,
       skin: '#B97E5A', skinShade: '#9C6445', skinLine: '#6E4130', lip: '#965446',
       hipN: [-27, 6], hipF: [24, 6], thigh: 214, shin: 206,
       waist: [0, -20], shN: [-70, -284], shF: [52, -278], neck: [4, -308],
-      upper: 160, fore: 142, footDrop: 22,
+      upper: 176, fore: 156, footDrop: 22,
     },
   };
 
@@ -91,15 +91,16 @@
     ctx.shape = (d, role, kind = 'body', extra = '') => {
       if (ctx.pass === 'ol') {
         if (kind !== 'body') return '';
-        return `<path d="${d}" fill="${ctx.lineCol}" stroke="${ctx.lineCol}" stroke-width="${n(ctx.lw * 2)}" stroke-linejoin="round"/>`;
+        // whiteboard: a stroke only, so the outline can be drawn with a dash reveal
+        return `<path data-c="sil" d="${d}" fill="${wb ? 'none' : ctx.lineCol}" stroke="${ctx.lineCol}" stroke-width="${n(ctx.lw * 2)}" stroke-linejoin="round" stroke-linecap="round"/>`;
       }
       const stroke = ctx.pass === 'fill' && kind === 'body' ? 'none' : ctx.lineCol;
-      return `<path d="${d}" fill="${ctx.fillOf(role)}" stroke="${stroke}" stroke-width="${ctx.lw}" stroke-linejoin="round" stroke-linecap="round"${extra}/>`;
+      return `<path data-c="${kind === 'detail' ? 'detail' : 'sil'}" d="${d}" fill="${ctx.fillOf(role)}" stroke="${stroke}" stroke-width="${ctx.lw}" stroke-linejoin="round" stroke-linecap="round"${extra}/>`;
     };
     // Unfilled line work (folds, creases). w is relative to the base line width.
     ctx.line = (d, w = 0.7, col) => {
       if (ctx.pass === 'ol') return '';
-      return `<path d="${d}" fill="none" stroke="${col || ctx.lineCol}" stroke-width="${n(ctx.lw * (wb ? 0.8 : w))}" stroke-linecap="round" stroke-linejoin="round"/>`;
+      return `<path data-c="detail" d="${d}" fill="none" stroke="${col || ctx.lineCol}" stroke-width="${n(ctx.lw * (wb ? 0.8 : w))}" stroke-linecap="round" stroke-linejoin="round"/>`;
     };
     // Cel shading: omitted in whiteboard style.
     ctx.shade = (d, col, op = 1) => {
@@ -162,7 +163,7 @@
   /* ---------- hands ----------
    * Hand frame: origin at the wrist joint, fingers extend toward +y at rotation 0.
    * +x is the thumb side for a template near hand. */
-  const HAND_POSES = ['relaxed', 'open', 'point', 'chin', 'pen', 'fist'];
+  const HAND_POSES = ['relaxed', 'open', 'offer', 'point', 'chin', 'pen', 'fist'];
   function hand(ctx, poseName, scale = 1, side = 'N') {
     const S = (v) => v * scale;
     const tx = side === 'F' ? -1 : 1; // far hand shows the thumb on the other side
@@ -176,6 +177,16 @@
         fingers.push(capsule(S(14 * tx), S(10), -62 * tx, S(25), S(10)));
         extra.push([`M${S(-6 * tx)},${S(22)} Q${S(2 * tx)},${S(30)} ${S(10 * tx)},${S(24)}`, 0.5]);
         break;
+      case 'offer': {
+        // palm up, seen from the side: fingers held together and gently curved,
+        // thumb relaxed along the top edge
+        palm = smooth([[-13, -2], [13, -2], [16, 20], [15, 38], [-11, 40], [-15, 20]].map(([x, y]) => [S(x * tx), S(y)]));
+        fingers.push(smooth([[-11, 34], [15, 32], [17, 48], [15, 64], [9, 74], [0, 75], [-8, 68], [-12, 50]].map(([x, y]) => [S(x * tx), S(y)])));
+        fingers.push(capsule(S(14 * tx), S(8), -18 * tx, S(28), S(10)));
+        [[-3, 48, -2, 70], [4, 46, 5, 72], [10, 46, 11, 68]].forEach(([x1, y1, x2, y2]) =>
+          extra.push([`M${S(x1 * tx)},${S(y1)} L${S(x2 * tx)},${S(y2)}`, 0.45]));
+        break;
+      }
       case 'point':
         palm = smooth([[-14, -2], [14, -2], [16, 24], [10, 42], [-12, 42], [-16, 22]].map(([x, y]) => [S(x * tx), S(y)]));
         fingers.push(capsule(S(-9 * tx), S(36), -4 * tx, S(38), S(8.5)));
@@ -413,7 +424,7 @@
     const ear = isCoach ? [-45, -66] : [-48, -68];
     s += ctx.shape(ellipse(ear[0], ear[1], 7.5, 12.5), 'skin', 'normal');
     s += ctx.line(`M${ear[0] + 1},${ear[1] - 6} q-4,5 0,10`, 0.6, ctx.wb ? null : ctx.spec.skinLine);
-    s += face(ctx, f);
+    s += `<g data-c="face">${face(ctx, f)}</g>`;
     if (isCoach) {
       s += coachHairFront(ctx, f);
       // small gold hoop below the near ear
@@ -427,7 +438,7 @@
   /* ---------- torso & clothing ---------- */
   function coachTorso(ctx) {
     let s = '';
-    s += ctx.shape('M-20,-294 L22,-294 L20,-262 Q2,-250 -18,-262 Z', 'skin', 'normal');
+    s += ctx.shape('M-20,-294 L22,-294 L20,-262 Q2,-250 -18,-262 Z', 'skin', 'normal', ' stroke-opacity="0"'); // neck base: no seam line
     s += ctx.shape('M-38,-272 Q-18,-262 0,-257 Q18,-262 36,-272 L38,-92 Q0,-86 -40,-92 Z', 'teal', 'normal');
     s += ctx.shade('M14,-250 Q24,-180 20,-96 L36,-94 L35,-268 Z', C.tealShade, 0.55);
     s += ctx.line('M-8,-200 Q-2,-150 -10,-110', 0.6);
@@ -450,7 +461,7 @@
   }
   function coacheeTorso(ctx) {
     let s = '';
-    s += ctx.shape('M-24,-310 L24,-310 L22,-282 Q0,-272 -22,-282 Z', 'skin', 'normal');
+    s += ctx.shape('M-24,-310 L24,-310 L22,-282 Q0,-272 -22,-282 Z', 'skin', 'normal', ' stroke-opacity="0"'); // neck base: no seam line
     // ivory tee, crew neck
     s += ctx.shape('M-44,-290 Q-24,-284 -18,-282 Q0,-268 20,-282 Q28,-286 42,-290 L44,-70 Q0,-62 -46,-70 Z', 'tee', 'normal');
     s += ctx.line('M-20,-282 Q0,-266 20,-282', 0.8);
@@ -506,7 +517,7 @@
             t += `<rect x="-6" y="${F - 20}" width="12" height="16" rx="3" fill="${ctx.fillOf('watchFace')}" stroke="${ctx.lineCol}" stroke-width="1.2"/>`;
           }
         }
-        t += ctx.group(`hand-${anat}`, 0, F, a.wr || 0, () => hand(ctx, a.hand || 'relaxed', isCoach ? 1 : 1.12, side));
+        t += ctx.group(`hand-${anat}`, 0, F, a.wr || 0, () => `<g data-c="hand">${hand(ctx, a.hand || 'relaxed', isCoach ? 1 : 1.12, side)}</g>`);
         return t;
       });
       return s;
@@ -582,9 +593,9 @@
           const hb = () => ctx.group(null, sp.neck[0], sp.neck[1], p.head || 0, () =>
             `<g transform="translate(4 -24)">${ctx.id === 'coach-01' ? coachHairBack(ctx) : coacheeHairBack(ctx)}</g>`);
           t += `<g id="${ctx.prefix}-hair-back">${hb()}</g>`;
-          t += `<g id="${ctx.prefix}-wardrobe-front">${ctx.id === 'coach-01' ? coachTorso(ctx) : coacheeTorso(ctx)}</g>`;
-          t += `<g id="${ctx.prefix}-neck">` + ctx.shape(ctx.id === 'coach-01' ? 'M-14,-286 L-12,-326 L18,-326 L18,-286 Z' : 'M-17,-300 L-15,-344 L21,-344 L21,-300 Z', 'skin', 'normal') +
+          t += `<g id="${ctx.prefix}-neck">` + ctx.shape(ctx.id === 'coach-01' ? 'M-14,-286 L-12,-344 L18,-344 L18,-286 Z' : 'M-17,-300 L-15,-358 L21,-358 L21,-300 Z', 'skin', 'normal') +
             ctx.shade(ctx.id === 'coach-01' ? 'M-13,-320 L18,-322 L18,-306 Q2,-300 -13,-306 Z' : 'M-16,-338 L21,-340 L21,-322 Q2,-316 -16,-322 Z', sp.skinShade, 0.7) + '</g>';
+          t += `<g id="${ctx.prefix}-wardrobe-front">${ctx.id === 'coach-01' ? coachTorso(ctx) : coacheeTorso(ctx)}</g>`;
           t += ctx.group('head', sp.neck[0], sp.neck[1], p.head || 0, () => head(ctx, f));
           t += ctx.chain(() => arm(ctx, 'N', p.armN));
           return t;
